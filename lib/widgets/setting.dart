@@ -29,7 +29,7 @@ class _SettingState extends State<Setting> {
       onTapDown: (_) => _handleTap(true),
       onTapUp: (_) => _handleTap(false),
       onTapCancel: () => _handleTap(false),
-      onDoubleTap: () => _handleTap(true),
+      onDoubleTap: () => _handleTap(false),
       child: Container(
         height: 65,
         decoration: BoxDecoration(

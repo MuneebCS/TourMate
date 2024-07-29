@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/menu_bar.dart';
-
-import '../widgets/one_bookmark.dart';
+import '../widgets/city_view.dart';
+import '../widgets/country_view.dart';
+import '../widgets/destination_view.dart';
 
 class Home extends StatefulWidget {
   Home({super.key});
@@ -20,21 +21,21 @@ class _HomeState extends State<Home> {
 
   final List<Map<String, dynamic>> cities = [
     {
-      'title': 'City1',
+      'title': 'Aragua',
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
       'isOneBookmark': Icon(Icons.bookmark),
     },
     {
-      'title': 'City2',
+      'title': 'Paris',
       'imageUrl': 'assets/images/B2.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
       'isOneBookmark': Icon(Icons.bookmark),
     },
     {
-      'title': 'City3',
+      'title': 'London',
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
@@ -44,21 +45,21 @@ class _HomeState extends State<Home> {
 
   final List<Map<String, dynamic>> countries = [
     {
-      'title': 'Country1',
+      'title': 'Indonesia',
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
       'isOneBookmark': Icon(Icons.bookmark),
     },
     {
-      'title': 'Country2',
+      'title': 'Japan',
       'imageUrl': 'assets/images/B2.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
       'isOneBookmark': Icon(Icons.bookmark),
     },
     {
-      'title': 'Country3',
+      'title': 'South korea',
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
@@ -68,21 +69,21 @@ class _HomeState extends State<Home> {
 
   final List<Map<String, dynamic>> destinations = [
     {
-      'title': 'destination1',
+      'title': 'Borobudur Temple',
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
       'isOneBookmark': Icon(Icons.bookmark),
     },
     {
-      'title': 'destination2',
+      'title': 'Zion National Park',
       'imageUrl': 'assets/images/B2.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
       'isOneBookmark': Icon(Icons.bookmark),
     },
     {
-      'title': 'destination3',
+      'title': 'Serengi',
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
@@ -224,11 +225,11 @@ class _HomeState extends State<Home> {
           ),
         ),
         IconButton(
-          icon:
-              Icon(Icons.search, color: Theme.of(context).secondaryHeaderColor),
-          onPressed: () {
-            // Handle search button press
-          },
+          icon: ImageIcon(
+            AssetImage('assets/icons/search.png'),
+            color: Theme.of(context).secondaryHeaderColor,
+          ),
+          onPressed: () {},
         ),
       ],
     );
@@ -240,22 +241,63 @@ class _HomeState extends State<Home> {
       itemCount: _getCurrentItems().length,
       itemBuilder: (BuildContext context, int index) {
         final bookmark = _getCurrentItems()[index];
-        return Padding(
-          padding: EdgeInsets.only(
-            left: index == 0 ? 0 : 5,
-            right: index == _getCurrentItems().length - 1 ? 0 : 5,
-          ),
-          child: OneBookmark(
-            title: bookmark['title'],
-            imageUrl: bookmark['imageUrl'],
-            location: bookmark['location'],
-            rating: bookmark['rating'],
-            customButton: index < _getCurrentItems().length - 1
-                ? _buildNextButton(screenWidth, context)
-                : null,
-            isOneBookmark: bookmark['isOneBookmark'],
-          ),
-        );
+
+        // Determine the appropriate widget to use based on the selected menu index
+        if (selectedMenuIndex == 0) {
+          // Destinations
+          return Padding(
+            padding: EdgeInsets.only(
+              left: index == 0 ? 0 : 5,
+              right: index == _getCurrentItems().length - 1 ? 0 : 5,
+            ),
+            child: OneDestination(
+              title: bookmark['title'],
+              imageUrl: bookmark['imageUrl'],
+              location: bookmark['location'],
+              rating: bookmark['rating'],
+              customButton: index < _getCurrentItems().length - 1
+                  ? _buildNextButton(screenWidth, context)
+                  : null,
+              isOneDestination: bookmark['isOneBookmark'],
+            ),
+          );
+        } else if (selectedMenuIndex == 1) {
+          // Countries
+          return Padding(
+            padding: EdgeInsets.only(
+              left: index == 0 ? 0 : 5,
+              right: index == _getCurrentItems().length - 1 ? 0 : 5,
+            ),
+            child: OneCountry(
+              title: bookmark['title'],
+              imageUrl: bookmark['imageUrl'],
+              location: bookmark['location'],
+              rating: bookmark['rating'],
+              customButton: index < _getCurrentItems().length - 1
+                  ? _buildNextButton(screenWidth, context)
+                  : null,
+              isOneCountry: bookmark['isOneBookmark'],
+            ),
+          );
+        } else if (selectedMenuIndex == 2) {
+          // Cities
+          return Padding(
+            padding: EdgeInsets.only(
+              left: index == 0 ? 0 : 5,
+              right: index == _getCurrentItems().length - 1 ? 0 : 5,
+            ),
+            child: OneCity(
+              title: bookmark['title'],
+              imageUrl: bookmark['imageUrl'],
+              location: bookmark['location'],
+              rating: bookmark['rating'],
+              customButton: index < _getCurrentItems().length - 1
+                  ? _buildNextButton(screenWidth, context)
+                  : null,
+              isOneCity: bookmark['isOneBookmark'],
+            ),
+          );
+        }
       },
     );
   }

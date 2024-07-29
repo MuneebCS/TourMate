@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tourmate/screens/booking_list.dart';
+import 'package:tourmate/screens/home.dart';
 import 'package:tourmate/screens/homescreen.dart';
 import 'package:tourmate/screens/onboarding_screen.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Tour Mate",
       theme: DarkTheme,
-      home: ONBoarding(),
+      home: HomeScreen(),
     );
   }
 }

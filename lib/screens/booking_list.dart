@@ -39,8 +39,8 @@ class BookingList extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(
-                      Icons.search,
+                    icon: ImageIcon(
+                      AssetImage('assets/icons/search.png'),
                       color: Theme.of(context).secondaryHeaderColor,
                     ),
                     onPressed: () {},

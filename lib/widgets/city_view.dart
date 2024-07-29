@@ -5,21 +5,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tourmate/widgets/custom_container.dart';
 import '../widgets/custom_button.dart';
 
-class OneBookmark extends StatelessWidget {
+class OneCity extends StatelessWidget {
   final String title;
   final String imageUrl;
   final String rating;
   final String location;
   final CustomButton? customButton;
-  final Icon isOneBookmark;
+  final Icon isOneCity;
 
-  OneBookmark({
+  OneCity({
     required this.title,
     required this.imageUrl,
     required this.location,
     required this.rating,
     this.customButton,
-    required this.isOneBookmark,
+    required this.isOneCity,
   });
 
   @override
@@ -85,7 +85,7 @@ class OneBookmark extends StatelessWidget {
                       ),
                     ),
                     Icon(
-                      isOneBookmark.icon,
+                      isOneCity.icon,
                       color: Col1,
                     ),
                   ],
