@@ -73,13 +73,15 @@ Widget menuButton({
                           : Colors.grey,
                     ),
               ),
-              // set border radius to circular
               Container(
                 height: 2,
                 width: 16,
-                color: isSelected
-                    ? Theme.of(context).secondaryHeaderColor
-                    : Colors.transparent,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: isSelected
+                      ? Theme.of(context).secondaryHeaderColor
+                      : Colors.transparent,
+                ),
               )
             ],
           ),
@@ -88,8 +90,3 @@ Widget menuButton({
     ],
   );
 }
-
-
-// 2 changiings i want just
-// 1st : i want no distance bw menu bar and 
-// 2nd : 

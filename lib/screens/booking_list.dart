@@ -1,10 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/single_booking.dart';
 
 class BookingList extends StatelessWidget {
+  const BookingList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -40,7 +40,7 @@ class BookingList extends StatelessWidget {
                   ),
                   IconButton(
                     icon: ImageIcon(
-                      AssetImage('assets/icons/search.png'),
+                      const AssetImage('assets/icons/search.png'),
                       color: Theme.of(context).secondaryHeaderColor,
                     ),
                     onPressed: () {},
@@ -49,10 +49,10 @@ class BookingList extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 25),
+              padding: const EdgeInsets.only(left: 25),
               child: Divider(thickness: 2, color: Theme.of(context).cardColor),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -66,9 +66,9 @@ class BookingList extends StatelessWidget {
                       status: "Cancelled",
                       duration: "4 Jan - 20 Jan",
                       customButton: CustomButton(
-                        Col: Colors.transparent,
-                        C_height: 50,
-                        C_width: 100,
+                        col: Colors.transparent,
+                        c_height: 50,
+                        c_width: 100,
                         onPress: () {},
                         child: Icon(
                           Icons.arrow_forward,
@@ -76,7 +76,7 @@ class BookingList extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     SingleBooking(
@@ -85,9 +85,9 @@ class BookingList extends StatelessWidget {
                       rating: '4.2',
                       duration: "4 jan - 20 jan",
                       customButton: CustomButton(
-                        Col: Colors.transparent,
-                        C_height: 50,
-                        C_width: 100,
+                        col: Colors.transparent,
+                        c_height: 50,
+                        c_width: 100,
                         onPress: () {},
                         child: Icon(
                           Icons.arrow_forward,
@@ -95,7 +95,7 @@ class BookingList extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     SingleBooking(
@@ -105,9 +105,9 @@ class BookingList extends StatelessWidget {
                       rating: '4.2',
                       duration: "4 jan - 20 jan",
                       customButton: CustomButton(
-                        Col: Colors.transparent,
-                        C_height: 50,
-                        C_width: 100,
+                        col: Colors.transparent,
+                        c_height: 50,
+                        c_width: 100,
                         onPress: () {},
                         child: Icon(
                           Icons.arrow_forward,

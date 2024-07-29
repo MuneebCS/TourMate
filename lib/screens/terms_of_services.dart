@@ -20,9 +20,9 @@ class TermsOfServices extends StatelessWidget {
               Row(
                 children: [
                   CustomButton(
-                    C_height: 60,
-                    C_width: 65,
-                    Col: Theme.of(context).cardColor,
+                    c_height: 60,
+                    c_width: 65,
+                    col: Theme.of(context).cardColor,
                     onPress: () {},
                     child: Icon(
                       Icons.rule_sharp,

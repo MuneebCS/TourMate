@@ -119,14 +119,14 @@ class _RegisterState extends State<Register> {
                 const SizedBox(height: 35),
                 Center(
                   child: CustomButton(
-                    C_height: 50,
-                    C_width: screenWidth * 0.85,
-                    Col: Theme.of(context).secondaryHeaderColor,
+                    c_height: 50,
+                    c_width: screenWidth * 0.85,
+                    col: Theme.of(context).secondaryHeaderColor,
                     onPress: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => VerifyIdentity(),
+                            builder: (context) => const VerifyIdentity(),
                           ));
                     },
                     child: Text(
@@ -149,9 +149,9 @@ class _RegisterState extends State<Register> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CustomButton(
-                      C_height: 60,
-                      C_width: 90,
-                      Col: Theme.of(context).cardColor,
+                      c_height: 60,
+                      c_width: 90,
+                      col: Theme.of(context).cardColor,
                       onPress: () {},
                       child: Icon(
                         Icons.apple,
@@ -160,9 +160,9 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                     CustomButton(
-                      C_height: 60,
-                      C_width: 90,
-                      Col: Theme.of(context).cardColor,
+                      c_height: 60,
+                      c_width: 90,
+                      col: Theme.of(context).cardColor,
                       onPress: () {},
                       child: SvgPicture.asset(
                         'assets/icons/googl1.svg',
@@ -172,9 +172,9 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                     CustomButton(
-                      C_height: 60,
-                      C_width: 90,
-                      Col: Theme.of(context).cardColor,
+                      c_height: 60,
+                      c_width: 90,
+                      col: Theme.of(context).cardColor,
                       onPress: () {},
                       child: Icon(
                         Icons.facebook,

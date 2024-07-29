@@ -9,7 +9,7 @@ class MyMap extends StatefulWidget {
 
 class _MyMapState extends State<MyMap> {
   LatLng _markerPosition =
-      LatLng(30.546191, 78.761761); // Initial position of the marker
+      const LatLng(30.546191, 78.761761); // Initial position of the marker
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +25,18 @@ class _MyMapState extends State<MyMap> {
             color: Theme.of(context).primaryColor,
             blurRadius: 8.0,
             spreadRadius: 2.0,
-            offset: Offset(0.0, 4.0),
+            offset: const Offset(0.0, 4.0),
           ),
         ],
       ),
       child: FlutterMap(
         options: MapOptions(
-          crs: Epsg3857(),
+          crs: const Epsg3857(),
           initialCenter: initialCoordinates,
           initialZoom: 10.0,
           initialRotation: 0.0,
-          cameraConstraint: CameraConstraint.unconstrained(),
-          interactionOptions: InteractionOptions(
+          cameraConstraint: const CameraConstraint.unconstrained(),
+          interactionOptions: const InteractionOptions(
             flags: InteractiveFlag.all,
           ),
           minZoom: 10.0,
@@ -58,7 +58,7 @@ class _MyMapState extends State<MyMap> {
                 width: 70.0,
                 height: 70.0,
                 point: _markerPosition,
-                child: Icon(
+                child: const Icon(
                   Icons.location_on,
                   color: Colors.red,
                   size: 40.0,

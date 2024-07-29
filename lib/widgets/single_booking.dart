@@ -47,7 +47,7 @@ class SingleBooking extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -67,7 +67,7 @@ class SingleBooking extends StatelessWidget {
                               size: 14,
                               color: col1,
                             ),
-                            SizedBox(width: 4),
+                            const SizedBox(width: 4),
                             Expanded(
                               child: Text(
                                 rating,
@@ -99,7 +99,7 @@ class SingleBooking extends StatelessWidget {
                       ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -113,7 +113,7 @@ class SingleBooking extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
                       duration,
                       style: GoogleFonts.roboto(
@@ -123,7 +123,7 @@ class SingleBooking extends StatelessWidget {
                     ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 if (customButton != null)
                   Align(
                     alignment: Alignment.bottomRight,

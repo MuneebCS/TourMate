@@ -19,7 +19,7 @@ class SplashOneState extends State<SplashOne> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => ONBoarding(),
+            builder: (context) => const ONBoarding(),
           ));
     });
   }

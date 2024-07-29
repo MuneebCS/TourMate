@@ -92,7 +92,7 @@ import 'search.dart';
 import 'settings.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -129,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: _onItemTapped,
         items: [
           _buildNavBarItem('assets/icons/home.svg', 0, ""),
-          _buildNavBarItem('assets/icons/search.png', 1, ""),
+          _buildNavBarItem('assets/icons/search.svg', 1, ""),
           _buildNavBarItem('assets/icons/bookmark.svg', 2, ""),
           _buildNavBarItem('assets/icons/settings.svg', 3, ""),
         ],
@@ -150,23 +150,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         padding: const EdgeInsets.all(12),
         child: InkWell(
-          onTap: () => _onItemTapped(index),
-          child: iconPath.endsWith('.svg')
-              ? SvgPicture.asset(
-                  iconPath,
-                  colorFilter: ColorFilter.mode(
-                      _selectedIndex == index ? primaryColor : Colors.grey,
-                      BlendMode.srcIn),
-                  height: 24,
-                  width: 24,
-                )
-              : Image.asset(
-                  iconPath,
-                  color: _selectedIndex == index ? primaryColor : Colors.grey,
-                  height: 24,
-                  width: 24,
-                ),
-        ),
+            onTap: () => _onItemTapped(index),
+            child: SvgPicture.asset(
+              iconPath,
+              colorFilter: ColorFilter.mode(
+                  _selectedIndex == index ? primaryColor : Colors.grey,
+                  BlendMode.srcIn),
+              height: 24,
+              width: 24,
+            )),
       ),
       label: label,
     );

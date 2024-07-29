@@ -124,9 +124,9 @@ class _VerificationCodeState extends State<VerificationCode> {
             ),
             SizedBox(height: screenHeight * 0.13),
             CustomButton(
-              C_height: 50,
-              C_width: screenWidth * 0.85,
-              Col: Theme.of(context).secondaryHeaderColor,
+              c_height: 50,
+              c_width: screenWidth * 0.85,
+              col: Theme.of(context).secondaryHeaderColor,
               onPress: () {
                 Navigator.push(
                     context,

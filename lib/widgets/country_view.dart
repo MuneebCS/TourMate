@@ -69,7 +69,7 @@ class OneCountry extends StatelessWidget {
                               size: 14,
                               color: Col1,
                             ),
-                            SizedBox(width: 4),
+                            const SizedBox(width: 4),
                             Expanded(
                               child: Text(
                                 rating,
@@ -90,7 +90,7 @@ class OneCountry extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 100),
+                const SizedBox(height: 100),
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -101,7 +101,7 @@ class OneCountry extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
                   location,
                   style: GoogleFonts.montserrat(
@@ -111,7 +111,7 @@ class OneCountry extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),
-                Spacer(),
+                const Spacer(),
                 Padding(
                   padding: EdgeInsets.only(left: screenWidth * 0.4),
                   child: Container(

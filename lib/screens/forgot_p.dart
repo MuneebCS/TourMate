@@ -120,9 +120,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
             SizedBox(height: screenHeight * 0.1),
             CustomButton(
-              C_height: 50,
-              C_width: screenWidth * 0.85,
-              Col: Theme.of(context).secondaryHeaderColor,
+              c_height: 50,
+              c_width: screenWidth * 0.85,
+              col: Theme.of(context).secondaryHeaderColor,
               onPress: () {
                 Navigator.push(
                     context,

@@ -22,9 +22,9 @@ class Settings extends StatelessWidget {
               Row(
                 children: [
                   CustomButton(
-                    C_height: 65,
-                    C_width: 70,
-                    Col: Theme.of(context).cardColor,
+                    c_height: 65,
+                    c_width: 70,
+                    col: Theme.of(context).cardColor,
                     onPress: () {},
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
@@ -72,9 +72,9 @@ class Settings extends StatelessWidget {
                     children: [
                       Setting(
                         customButton: CustomButton(
-                            Col: Colors.transparent,
-                            C_height: 50,
-                            C_width: 50,
+                            col: Colors.transparent,
+                            c_height: 50,
+                            c_width: 50,
                             onPress: () {},
                             child: Icon(
                               Icons.arrow_forward_ios_sharp,
@@ -83,20 +83,20 @@ class Settings extends StatelessWidget {
                         settingName: "Your Profile",
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 2, right: 2),
+                        padding: const EdgeInsets.only(left: 2, right: 2),
                         child: Divider(
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
                         customButton: CustomButton(
-                            Col: Colors.transparent,
-                            C_height: 50,
-                            C_width: 50,
+                            col: Colors.transparent,
+                            c_height: 50,
+                            c_width: 50,
                             onPress: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BookingList(),
+                                    builder: (context) => const BookingList(),
                                   ));
                             },
                             child: Icon(
@@ -106,15 +106,15 @@ class Settings extends StatelessWidget {
                         settingName: "Booking List",
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 2, right: 2),
+                        padding: const EdgeInsets.only(left: 2, right: 2),
                         child: Divider(
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
                         customButton: CustomButton(
-                            Col: Colors.transparent,
-                            C_height: 50,
-                            C_width: 50,
+                            col: Colors.transparent,
+                            c_height: 50,
+                            c_width: 50,
                             onPress: () {},
                             child: Icon(
                               Icons.arrow_forward_ios_sharp,
@@ -123,15 +123,15 @@ class Settings extends StatelessWidget {
                         settingName: "Promotion",
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 2, right: 2),
+                        padding: const EdgeInsets.only(left: 2, right: 2),
                         child: Divider(
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
                         customButton: CustomButton(
-                            Col: Colors.transparent,
-                            C_height: 50,
-                            C_width: 50,
+                            col: Colors.transparent,
+                            c_height: 50,
+                            c_width: 50,
                             onPress: () {},
                             child: Icon(
                               Icons.arrow_forward_ios_sharp,
@@ -140,15 +140,15 @@ class Settings extends StatelessWidget {
                         settingName: "Payment",
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 2, right: 2),
+                        padding: const EdgeInsets.only(left: 2, right: 2),
                         child: Divider(
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
                         customButton: CustomButton(
-                            Col: Colors.transparent,
-                            C_height: 50,
-                            C_width: 50,
+                            col: Colors.transparent,
+                            c_height: 50,
+                            c_width: 50,
                             onPress: () {},
                             child: Icon(
                               Icons.arrow_forward_ios_sharp,
@@ -157,15 +157,15 @@ class Settings extends StatelessWidget {
                         settingName: "Settings",
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 2, right: 2),
+                        padding: const EdgeInsets.only(left: 2, right: 2),
                         child: Divider(
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
                         customButton: CustomButton(
-                            Col: Colors.transparent,
-                            C_height: 50,
-                            C_width: 50,
+                            col: Colors.transparent,
+                            c_height: 50,
+                            c_width: 50,
                             onPress: () {
                               Navigator.push(
                                   context,

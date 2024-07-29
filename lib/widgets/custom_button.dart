@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  final double C_height;
-  final double C_width;
-  final Color Col;
+  final double c_height;
+  final double c_width;
+  final Color col;
   final VoidCallback onPress;
   final Widget child;
 
   CustomButton({
-    required this.Col,
-    required this.C_height,
-    required this.C_width,
+    required this.col,
+    required this.c_height,
+    required this.c_width,
     required this.onPress,
     required this.child,
   });
@@ -20,10 +20,10 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: Container(
-        height: C_height,
-        width: C_width,
+        height: c_height,
+        width: c_width,
         decoration: BoxDecoration(
-          color: Col,
+          color: col,
           borderRadius: BorderRadius.circular(18),
         ),
         child: Center(

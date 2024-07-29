@@ -6,6 +6,8 @@ import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/custom_textfield.dart';
 
 class VerifyIdentity extends StatefulWidget {
+  const VerifyIdentity({super.key});
+
   @override
   State<VerifyIdentity> createState() => _VerifyIdentityState();
 }
@@ -145,9 +147,9 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                   SizedBox(height: screenHeight * 0.07),
                   Center(
                     child: CustomButton(
-                      C_height: 50,
-                      C_width: screenWidth * 0.80,
-                      Col: Theme.of(context).secondaryHeaderColor,
+                      c_height: 50,
+                      c_width: screenWidth * 0.80,
+                      col: Theme.of(context).secondaryHeaderColor,
                       onPress: () {
                         Navigator.push(
                           context,

@@ -1,48 +1,37 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/one_bookmark.dart'; // Ensure you have this package in your pubspec.yaml
 
+// ignore: must_be_immutable
 class Bookmarks extends StatelessWidget {
   Bookmarks({super.key});
 
-  final List<Map<String, dynamic>> bookmarks = [
-    {
-      'title': 'Goreme National Park',
-      'imageUrl': 'assets/images/B2.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
-    },
-    {
-      'title': 'Borobudar Temple',
-      'imageUrl': 'assets/images/B1.jpg',
-      'location': 'Magelang Indonesia',
-      'rating': '4.2',
-      'isOneBookmark': Icon(Icons.bookmark),
-    },
-    {
-      'title': 'Goreme National Park',
-      'imageUrl': 'assets/images/B2.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
-    },
-    {
-      'title': 'Goreme National Park',
-      'imageUrl': 'assets/images/B2.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
-    },
-    {
-      'title': 'Goreme National Park',
-      'imageUrl': 'assets/images/B2.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
-    },
+  List<OneBookmark> bookmarks = [
+    OneBookmark(
+      title: 'Goreme National Park',
+      imageUrl: 'assets/images/B2.jpg',
+      location: 'Nevsehir Markiz Turkey',
+      rating: '4.5',
+      isOneBookmark: const Icon(Icons.bookmark),
+    ),
+    OneBookmark(
+      title: 'Goreme National Park',
+      imageUrl: 'assets/images/B2.jpg',
+      location: 'Nevsehir Markiz Turkey',
+      rating: '4.5',
+      isOneBookmark: const Icon(Icons.bookmark),
+    ),
+    OneBookmark(
+      title: 'Goreme National Park',
+      imageUrl: 'assets/images/B2.jpg',
+      location: 'Nevsehir Markiz Turkey',
+      rating: '4.5',
+      isOneBookmark: const Icon(Icons.bookmark),
+    ),
   ];
 
   final PageController _pageController = PageController(viewportFraction: 0.75);
@@ -53,7 +42,7 @@ class Bookmarks extends StatelessWidget {
       if (nextPage < bookmarks.length) {
         _pageController.animateToPage(
           nextPage,
-          duration: Duration(milliseconds: 250),
+          duration: const Duration(milliseconds: 250),
           curve: Curves.easeInOut,
         );
       }
@@ -71,32 +60,30 @@ class Bookmarks extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 30, top: 10, bottom: 10),
+              padding: const EdgeInsets.only(top: 25, left: 30, right: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "Your Bookmark",
-                    style: TextStyle(
+                    style: GoogleFonts.montserrat(
                       color: Theme.of(context).secondaryHeaderColor,
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.search,
+                  GestureDetector(
+                    child: SvgPicture.asset(
+                      'assets/icons/search.svg',
                       color: Theme.of(context).secondaryHeaderColor,
                     ),
-                    onPressed: () {
-                      // Handle search button press
-                    },
+                    onTap: () {},
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 30, bottom: 15),
+              padding: const EdgeInsets.only(left: 30, bottom: 10),
               child: Divider(thickness: 2, color: Theme.of(context).cardColor),
             ),
             Expanded(
@@ -111,46 +98,47 @@ class Bookmarks extends StatelessWidget {
                       right: index == bookmarks.length - 1 ? 0 : 5,
                     ),
                     child: OneBookmark(
-                        title: bookmark['title'],
-                        imageUrl: bookmark['imageUrl'],
-                        location: bookmark['location'],
-                        rating: bookmark['rating'],
-                        isOneBookmark: bookmark['isOneBookmark'],
-                        customButton: index < bookmarks.length - 1
-                            ? CustomButton(
-                                C_height: 50,
-                                C_width: screenWidth * 0.3,
-                                Col: Colors.transparent,
-                                onPress: _scrollToNextPage,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(18),
-                                  ),
-                                  child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(18),
-                                        child: BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                              sigmaX: 10.0, sigmaY: 10.0),
-                                          child: Container(
-                                            color: Theme.of(context)
-                                                .secondaryHeaderColor
-                                                .withOpacity(0.2),
-                                          ),
+                      title: bookmark.title,
+                      imageUrl: bookmark.imageUrl,
+                      location: bookmark.location,
+                      rating: bookmark.rating,
+                      isOneBookmark: bookmark.isOneBookmark,
+                      customButton: index < bookmarks.length - 1
+                          ? CustomButton(
+                              c_height: 50,
+                              c_width: screenWidth * 0.3,
+                              col: Colors.transparent,
+                              onPress: _scrollToNextPage,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(18),
+                                ),
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(18),
+                                      child: BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 10.0, sigmaY: 10.0),
+                                        child: Container(
+                                          color: Theme.of(context)
+                                              .secondaryHeaderColor
+                                              .withOpacity(0.2),
                                         ),
                                       ),
-                                      Icon(
-                                        Icons.arrow_forward,
-                                        color: Theme.of(context)
-                                            .secondaryHeaderColor,
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward,
+                                      color: Theme.of(context)
+                                          .secondaryHeaderColor,
+                                    ),
+                                  ],
                                 ),
-                              )
-                            : null),
+                              ),
+                            )
+                          : null,
+                    ),
                   );
                 },
               ),

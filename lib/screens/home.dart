@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/menu_bar.dart';
@@ -8,7 +9,7 @@ import '../widgets/country_view.dart';
 import '../widgets/destination_view.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  Home({super.key});
 
   @override
   _HomeState createState() => _HomeState();
@@ -18,87 +19,73 @@ class _HomeState extends State<Home> {
   final PageController _pageController = PageController(viewportFraction: 0.9);
 
   int selectedMenuIndex = 0;
-
-  // TODO: save data using classes
-  final List<Map<String, dynamic>> cities = [
-    {
-      'title': 'Aragua',
-      'imageUrl': 'assets/images/B1.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': const Icon(Icons.bookmark),
-    },
-    {
-      'title': 'Paris',
-      'imageUrl': 'assets/images/B2.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': const Icon(Icons.bookmark),
-    },
-    {
-      'title': 'London',
-      'imageUrl': 'assets/images/B1.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': const Icon(Icons.bookmark),
-    },
+  bool isSearchTapped = false;
+  List<OneCity> cities = [
+    OneCity(
+        title: 'Aragua',
+        imageUrl: 'assets/images/B1.jpg',
+        location: 'Nevsehir Markiz Turkey',
+        rating: '4.5',
+        isOneCity: const Icon(Icons.bookmark)),
+    OneCity(
+        title: 'London',
+        imageUrl: 'assets/images/B1.jpg',
+        location: 'Nevsehir Markiz Turkey',
+        rating: '4.5',
+        isOneCity: const Icon(Icons.bookmark)),
+    OneCity(
+        title: 'Paris',
+        imageUrl: 'assets/images/B1.jpg',
+        location: 'Nevsehir Markiz Turkey',
+        rating: '4.5',
+        isOneCity: const Icon(Icons.bookmark)),
   ];
 
-// TODO: save data using classes
-  final List<Map<String, dynamic>> countries = [
-    {
-      'title': 'Indonesia',
-      'imageUrl': 'assets/images/B1.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': const Icon(Icons.bookmark),
-    },
-    {
-      'title': 'Japan',
-      'imageUrl': 'assets/images/B2.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': const Icon(Icons.bookmark),
-    },
-    {
-      'title': 'South korea',
-      'imageUrl': 'assets/images/B1.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': const Icon(Icons.bookmark),
-    },
+  List<OneDestination> destinations = [
+    OneDestination(
+        title: 'Aragua',
+        imageUrl: 'assets/images/B1.jpg',
+        location: 'Nevsehir Markiz Turkey',
+        rating: '4.5',
+        isOneDestination: const Icon(Icons.bookmark)),
+    OneDestination(
+        title: 'Aragua',
+        imageUrl: 'assets/images/B1.jpg',
+        location: 'Nevsehir Markiz Turkey',
+        rating: '4.5',
+        isOneDestination: const Icon(Icons.bookmark)),
+    OneDestination(
+        title: 'Aragua',
+        imageUrl: 'assets/images/B1.jpg',
+        location: 'Nevsehir Markiz Turkey',
+        rating: '4.5',
+        isOneDestination: const Icon(Icons.bookmark)),
   ];
 
-// TODO: save data using classes
-
-  final List<Map<String, dynamic>> destinations = [
-    {
-      'title': 'Borobudur Temple',
-      'imageUrl': 'assets/images/B1.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': const Icon(Icons.bookmark),
-    },
-    {
-      'titlee': 'Zion National Park',
-      'imageUrl': 'assets/images/B2.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': const Icon(Icons.bookmark),
-    },
-    {
-      'title': 'Serengi',
-      'imageUrl': 'assets/images/B1.jpg',
-      'location': 'Nevsehir Markiz Turkey',
-      'rating': '4.5',
-      'isOneBookmark': const Icon(Icons.bookmark),
-    },
+  List<OneCountry> countries = [
+    OneCountry(
+        title: 'Aragua',
+        imageUrl: 'assets/images/B1.jpg',
+        location: 'Nevsehir Markiz Turkey',
+        rating: '4.5',
+        isOneCountry: const Icon(Icons.bookmark)),
+    OneCountry(
+        title: 'Aragua',
+        imageUrl: 'assets/images/B1.jpg',
+        location: 'Nevsehir Markiz Turkey',
+        rating: '4.5',
+        isOneCountry: const Icon(Icons.bookmark)),
+    OneCountry(
+        title: 'Aragua',
+        imageUrl: 'assets/images/B1.jpg',
+        location: 'Nevsehir Markiz Turkey',
+        rating: '4.5',
+        isOneCountry: const Icon(Icons.bookmark)),
   ];
 
-  // remove force unwrapping
   void _scrollToNextPage() {
     if (_pageController.hasClients) {
-      final int nextPage = (_pageController.page ?? 0.0).toInt() + 1;
+      final int nextPage = _pageController.page!.toInt() + 1;
       if (nextPage < _getCurrentItems().length) {
         _pageController.animateToPage(
           nextPage,
@@ -115,7 +102,7 @@ class _HomeState extends State<Home> {
     });
   }
 
-  List<Map<String, dynamic>> _getCurrentItems() {
+  List<dynamic> _getCurrentItems() {
     switch (selectedMenuIndex) {
       case 0:
         return destinations;
@@ -139,20 +126,17 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 20.0, right: 20, top: 20, bottom: 10),
-              child: Column(
-                children: [
-                  _buildHeader(context),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  _buildRecommendationRow(context),
-                ],
-              ),
+              padding: const EdgeInsets.only(left: 30, top: 25, right: 30),
+              child: _buildHeader(context),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30, top: 5, right: 30),
+              child: isSearchTapped
+                  ? _buildTextField(context)
+                  : _buildRecommendationRow(context),
             ),
             const Padding(
-              padding: EdgeInsets.only(left: 30, bottom: 20),
+              padding: EdgeInsets.only(left: 30, top: 5),
               child: Divider(thickness: 2),
             ),
             Expanded(
@@ -211,13 +195,12 @@ class _HomeState extends State<Home> {
       children: [
         Text(
           "Welcome",
-          style:
-              GoogleFonts.montserrat(fontSize: 12, fontWeight: FontWeight.w500),
+          style: GoogleFonts.roboto(fontSize: 10),
         ),
+        const SizedBox(height: 5),
         Text(
           "Evelyn",
-          style:
-              GoogleFonts.montserrat(fontSize: 22, fontWeight: FontWeight.bold),
+          style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ],
     );
@@ -229,26 +212,29 @@ class _HomeState extends State<Home> {
       children: [
         Text(
           "Recommendation",
-          style: GoogleFonts.montserrat(
+          style: TextStyle(
             color: Theme.of(context).secondaryHeaderColor,
             fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
         ),
         GestureDetector(
-          onTap: () {},
-          child: Image.asset(
-            'assets/icons/search.png',
-            width: 24,
+          child: SvgPicture.asset(
+            'assets/icons/search.svg',
+            color: Theme.of(context).secondaryHeaderColor,
           ),
-        )
-        // IconButton(
-        //   icon: ImageIcon(
-        //     const AssetImage('assets/icons/search.png'),
-        //     color: Theme.of(context).secondaryHeaderColor,
-        //   ),
-        //   onPressed: () {},
-        // ),
+          onTap: () {},
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTextField(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        TextField(),
+        Icon(Icons.crop_sharp),
       ],
     );
   }
@@ -258,63 +244,68 @@ class _HomeState extends State<Home> {
       controller: _pageController,
       itemCount: _getCurrentItems().length,
       itemBuilder: (BuildContext context, int index) {
-        final bookmark = _getCurrentItems()[index];
+        final currentitem = _getCurrentItems()[index];
 
         // Determine the appropriate widget to use based on the selected menu index
         if (selectedMenuIndex == 0) {
           // Destinations
+          final destination = currentitem as OneDestination;
           return Padding(
             padding: EdgeInsets.only(
               left: index == 0 ? 0 : 5,
               right: index == _getCurrentItems().length - 1 ? 0 : 5,
             ),
             child: OneDestination(
-              title: bookmark['title'],
-              imageUrl: bookmark['imageUrl'],
-              location: bookmark['location'],
-              rating: bookmark['rating'],
+              title: destination.title,
+              imageUrl: destination.imageUrl,
+              location: destination.location,
+              rating: destination.rating,
               customButton: index < _getCurrentItems().length - 1
                   ? _buildNextButton(screenWidth, context)
                   : null,
-              isOneDestination: bookmark['isOneBookmark'],
+              isOneDestination: destination.isOneDestination,
             ),
           );
         } else if (selectedMenuIndex == 1) {
           // Countries
+          final country = currentitem as OneCountry;
           return Padding(
             padding: EdgeInsets.only(
               left: index == 0 ? 0 : 5,
               right: index == _getCurrentItems().length - 1 ? 0 : 5,
             ),
             child: OneCountry(
-              title: bookmark['title'],
-              imageUrl: bookmark['imageUrl'],
-              location: bookmark['location'],
-              rating: bookmark['rating'],
+              title: country.title,
+              imageUrl: country.imageUrl,
+              location: country.location,
+              rating: country.rating,
               customButton: index < _getCurrentItems().length - 1
                   ? _buildNextButton(screenWidth, context)
                   : null,
-              isOneCountry: bookmark['isOneBookmark'],
+              isOneCountry: country.isOneCountry,
             ),
           );
         } else if (selectedMenuIndex == 2) {
           // Cities
+          final city = currentitem as OneCity;
           return Padding(
             padding: EdgeInsets.only(
               left: index == 0 ? 0 : 5,
               right: index == _getCurrentItems().length - 1 ? 0 : 5,
             ),
             child: OneCity(
-              title: bookmark['title'],
-              imageUrl: bookmark['imageUrl'],
-              location: bookmark['location'],
-              rating: bookmark['rating'],
+              title: city.title,
+              imageUrl: city.imageUrl,
+              location: city.location,
+              rating: city.rating,
               customButton: index < _getCurrentItems().length - 1
                   ? _buildNextButton(screenWidth, context)
                   : null,
-              isOneCity: bookmark['isOneBookmark'],
+              isOneCity: city.isOneCity,
             ),
           );
+        } else {
+          return Container(); // Fallback case
         }
       },
     );
@@ -322,9 +313,9 @@ class _HomeState extends State<Home> {
 
   CustomButton _buildNextButton(double screenWidth, BuildContext context) {
     return CustomButton(
-      C_height: 50,
-      C_width: screenWidth * 0.3,
-      Col: Colors.transparent,
+      c_height: 50,
+      c_width: screenWidth * 0.3,
+      col: Colors.transparent,
       onPress: _scrollToNextPage,
       child: Container(
         decoration: BoxDecoration(

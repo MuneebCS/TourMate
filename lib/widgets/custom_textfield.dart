@@ -9,7 +9,7 @@ class CustomTextField extends StatelessWidget {
   final String? hintText;
   final bool obscureText;
 
-  CustomTextField({
+  const CustomTextField({
     required this.height,
     required this.width,
     this.leadingIcon,

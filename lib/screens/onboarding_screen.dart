@@ -8,6 +8,8 @@ import 'splash3.dart';
 import 'splash4.dart';
 
 class ONBoarding extends StatefulWidget {
+  const ONBoarding({super.key});
+
   @override
   _ONBoardingState createState() => _ONBoardingState();
 }
@@ -58,9 +60,9 @@ class _ONBoardingState extends State<ONBoarding> {
                 bottom: screenHeight * 0.02,
                 right: screenWidth * 0.05,
                 child: CustomButton(
-                  C_height: 60,
-                  C_width: 60,
-                  Col: Theme.of(context).secondaryHeaderColor,
+                  c_height: 60,
+                  c_width: 60,
+                  col: Theme.of(context).secondaryHeaderColor,
                   onPress: () {
                     _controller.nextPage(
                       duration: const Duration(milliseconds: 300),
@@ -74,9 +76,9 @@ class _ONBoardingState extends State<ONBoarding> {
                 bottom: screenHeight * 0.02,
                 right: screenWidth * 0.05,
                 child: CustomButton(
-                  C_height: 60,
-                  C_width: 90,
-                  Col: Theme.of(context).secondaryHeaderColor,
+                  c_height: 60,
+                  c_width: 90,
+                  col: Theme.of(context).secondaryHeaderColor,
                   onPress: () {
                     Navigator.push(
                       context,

@@ -16,7 +16,7 @@ class SplashThree extends StatelessWidget {
               height: screenHeight,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/splash3.jpg"),
+                  image: const AssetImage("assets/images/splash3.jpg"),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.5),
