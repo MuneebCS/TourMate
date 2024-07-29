@@ -8,7 +8,7 @@ import '../widgets/country_view.dart';
 import '../widgets/destination_view.dart';
 
 class Home extends StatefulWidget {
-  Home({super.key});
+  const Home({super.key});
 
   @override
   _HomeState createState() => _HomeState();
@@ -19,53 +19,57 @@ class _HomeState extends State<Home> {
 
   int selectedMenuIndex = 0;
 
+  // TODO: save data using classes
   final List<Map<String, dynamic>> cities = [
     {
       'title': 'Aragua',
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
+      'isOneBookmark': const Icon(Icons.bookmark),
     },
     {
       'title': 'Paris',
       'imageUrl': 'assets/images/B2.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
+      'isOneBookmark': const Icon(Icons.bookmark),
     },
     {
       'title': 'London',
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
+      'isOneBookmark': const Icon(Icons.bookmark),
     },
   ];
 
+// TODO: save data using classes
   final List<Map<String, dynamic>> countries = [
     {
       'title': 'Indonesia',
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
+      'isOneBookmark': const Icon(Icons.bookmark),
     },
     {
       'title': 'Japan',
       'imageUrl': 'assets/images/B2.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
+      'isOneBookmark': const Icon(Icons.bookmark),
     },
     {
       'title': 'South korea',
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
+      'isOneBookmark': const Icon(Icons.bookmark),
     },
   ];
+
+// TODO: save data using classes
 
   final List<Map<String, dynamic>> destinations = [
     {
@@ -73,31 +77,32 @@ class _HomeState extends State<Home> {
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
+      'isOneBookmark': const Icon(Icons.bookmark),
     },
     {
-      'title': 'Zion National Park',
+      'titlee': 'Zion National Park',
       'imageUrl': 'assets/images/B2.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
+      'isOneBookmark': const Icon(Icons.bookmark),
     },
     {
       'title': 'Serengi',
       'imageUrl': 'assets/images/B1.jpg',
       'location': 'Nevsehir Markiz Turkey',
       'rating': '4.5',
-      'isOneBookmark': Icon(Icons.bookmark),
+      'isOneBookmark': const Icon(Icons.bookmark),
     },
   ];
 
+  // remove force unwrapping
   void _scrollToNextPage() {
     if (_pageController.hasClients) {
-      final int nextPage = _pageController.page!.toInt() + 1;
+      final int nextPage = (_pageController.page ?? 0.0).toInt() + 1;
       if (nextPage < _getCurrentItems().length) {
         _pageController.animateToPage(
           nextPage,
-          duration: Duration(milliseconds: 250),
+          duration: const Duration(milliseconds: 250),
           curve: Curves.easeInOut,
         );
       }
@@ -134,15 +139,20 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 30, top: 25, right: 30),
-              child: _buildHeader(context),
+              padding: const EdgeInsets.only(
+                  left: 20.0, right: 20, top: 20, bottom: 10),
+              child: Column(
+                children: [
+                  _buildHeader(context),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  _buildRecommendationRow(context),
+                ],
+              ),
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 30, top: 5, right: 25),
-              child: _buildRecommendationRow(context),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 30, top: 5),
+            const Padding(
+              padding: EdgeInsets.only(left: 30, bottom: 20),
               child: Divider(thickness: 2),
             ),
             Expanded(
@@ -171,11 +181,11 @@ class _HomeState extends State<Home> {
         Row(
           children: [
             _buildProfileButton(context),
-            SizedBox(width: 5),
+            const SizedBox(width: 5),
             _buildWelcomeText(),
           ],
         ),
-        Icon(Icons.menu),
+        const Icon(Icons.menu),
       ],
     );
   }
@@ -187,7 +197,7 @@ class _HomeState extends State<Home> {
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(12),
-        image: DecorationImage(
+        image: const DecorationImage(
           image: AssetImage('assets/images/splash2.jpg'),
           fit: BoxFit.cover,
         ),
@@ -201,12 +211,13 @@ class _HomeState extends State<Home> {
       children: [
         Text(
           "Welcome",
-          style: GoogleFonts.roboto(fontSize: 10),
+          style:
+              GoogleFonts.montserrat(fontSize: 12, fontWeight: FontWeight.w500),
         ),
-        SizedBox(height: 5),
         Text(
           "Evelyn",
-          style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.bold),
+          style:
+              GoogleFonts.montserrat(fontSize: 22, fontWeight: FontWeight.bold),
         ),
       ],
     );
@@ -218,19 +229,26 @@ class _HomeState extends State<Home> {
       children: [
         Text(
           "Recommendation",
-          style: TextStyle(
+          style: GoogleFonts.montserrat(
             color: Theme.of(context).secondaryHeaderColor,
             fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
         ),
-        IconButton(
-          icon: ImageIcon(
-            AssetImage('assets/icons/search.png'),
-            color: Theme.of(context).secondaryHeaderColor,
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'assets/icons/search.png',
+            width: 24,
           ),
-          onPressed: () {},
-        ),
+        )
+        // IconButton(
+        //   icon: ImageIcon(
+        //     const AssetImage('assets/icons/search.png'),
+        //     color: Theme.of(context).secondaryHeaderColor,
+        //   ),
+        //   onPressed: () {},
+        // ),
       ],
     );
   }

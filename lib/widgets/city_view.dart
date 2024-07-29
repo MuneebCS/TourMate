@@ -74,9 +74,9 @@ class OneCity extends StatelessWidget {
                               child: Text(
                                 rating,
                                 style: GoogleFonts.montserrat(
-                                  color: Col1,
-                                  fontSize: 11,
-                                ),
+                                    color: Col1,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),

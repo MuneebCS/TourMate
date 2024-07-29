@@ -60,14 +60,28 @@ Widget menuButton({
         quarterTurns: 3,
         child: TextButton(
           onPressed: onTap,
-          child: Text(
-            text,
-            style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                  fontSize: 14,
-                  color: isSelected
-                      ? Theme.of(context).secondaryHeaderColor
-                      : Theme.of(context).hintColor,
-                ),
+          child: Column(
+            children: [
+              Text(
+                text,
+                style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                      fontSize: 18,
+                      fontWeight:
+                          isSelected ? FontWeight.bold : FontWeight.w600,
+                      color: isSelected
+                          ? Theme.of(context).secondaryHeaderColor
+                          : Colors.grey,
+                    ),
+              ),
+              // set border radius to circular
+              Container(
+                height: 2,
+                width: 16,
+                color: isSelected
+                    ? Theme.of(context).secondaryHeaderColor
+                    : Colors.transparent,
+              )
+            ],
           ),
         ),
       ),
