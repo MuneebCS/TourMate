@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tourmate/widgets/custom_button.dart';
+import 'package:tourmate/widgets/custom_textfield.dart';
 import 'package:tourmate/widgets/menu_bar.dart';
 import '../widgets/city_view.dart';
 import '../widgets/country_view.dart';
@@ -26,19 +27,19 @@ class _HomeState extends State<Home> {
         imageUrl: 'assets/images/B1.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
-        isOneCity: const Icon(Icons.bookmark)),
+        isOneCity: Icon(Icons.bookmark)),
     OneCity(
         title: 'London',
         imageUrl: 'assets/images/B1.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
-        isOneCity: const Icon(Icons.bookmark)),
+        isOneCity: Icon(Icons.bookmark)),
     OneCity(
         title: 'Paris',
         imageUrl: 'assets/images/B1.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
-        isOneCity: const Icon(Icons.bookmark)),
+        isOneCity: Icon(Icons.bookmark)),
   ];
 
   List<OneDestination> destinations = [
@@ -47,19 +48,19 @@ class _HomeState extends State<Home> {
         imageUrl: 'assets/images/B1.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
-        isOneDestination: const Icon(Icons.bookmark)),
+        isOneDestination: Icon(Icons.bookmark)),
     OneDestination(
         title: 'Aragua',
         imageUrl: 'assets/images/B1.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
-        isOneDestination: const Icon(Icons.bookmark)),
+        isOneDestination: Icon(Icons.bookmark)),
     OneDestination(
         title: 'Aragua',
         imageUrl: 'assets/images/B1.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
-        isOneDestination: const Icon(Icons.bookmark)),
+        isOneDestination: Icon(Icons.bookmark)),
   ];
 
   List<OneCountry> countries = [
@@ -68,19 +69,19 @@ class _HomeState extends State<Home> {
         imageUrl: 'assets/images/B1.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
-        isOneCountry: const Icon(Icons.bookmark)),
+        isOneCountry: Icon(Icons.bookmark)),
     OneCountry(
         title: 'Aragua',
         imageUrl: 'assets/images/B1.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
-        isOneCountry: const Icon(Icons.bookmark)),
+        isOneCountry: Icon(Icons.bookmark)),
     OneCountry(
         title: 'Aragua',
         imageUrl: 'assets/images/B1.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
-        isOneCountry: const Icon(Icons.bookmark)),
+        isOneCountry: Icon(Icons.bookmark)),
   ];
 
   void _scrollToNextPage() {
@@ -89,7 +90,7 @@ class _HomeState extends State<Home> {
       if (nextPage < _getCurrentItems().length) {
         _pageController.animateToPage(
           nextPage,
-          duration: const Duration(milliseconds: 250),
+          duration: Duration(milliseconds: 250),
           curve: Curves.easeInOut,
         );
       }
@@ -126,16 +127,16 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 30, top: 25, right: 30),
+              padding: EdgeInsets.only(left: 30, top: 25, right: 30),
               child: _buildHeader(context),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 30, top: 5, right: 30),
+              padding: EdgeInsets.only(left: 30, top: 5, right: 30),
               child: isSearchTapped
                   ? _buildTextField(context)
                   : _buildRecommendationRow(context),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 30, top: 5),
               child: Divider(thickness: 2),
             ),
@@ -165,11 +166,11 @@ class _HomeState extends State<Home> {
         Row(
           children: [
             _buildProfileButton(context),
-            const SizedBox(width: 5),
+            SizedBox(width: 5),
             _buildWelcomeText(),
           ],
         ),
-        const Icon(Icons.menu),
+        Icon(Icons.menu),
       ],
     );
   }
@@ -181,7 +182,7 @@ class _HomeState extends State<Home> {
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(12),
-        image: const DecorationImage(
+        image: DecorationImage(
           image: AssetImage('assets/images/splash2.jpg'),
           fit: BoxFit.cover,
         ),
@@ -197,7 +198,7 @@ class _HomeState extends State<Home> {
           "Welcome",
           style: GoogleFonts.roboto(fontSize: 10),
         ),
-        const SizedBox(height: 5),
+        SizedBox(height: 5),
         Text(
           "Evelyn",
           style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.bold),
@@ -223,7 +224,11 @@ class _HomeState extends State<Home> {
             'assets/icons/search.svg',
             color: Theme.of(context).secondaryHeaderColor,
           ),
-          onTap: () {},
+          onTap: () {
+            setState(() {
+              isSearchTapped = !isSearchTapped;
+            });
+          },
         ),
       ],
     );
@@ -233,8 +238,39 @@ class _HomeState extends State<Home> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        TextField(),
-        Icon(Icons.crop_sharp),
+        Expanded(
+          child: Container(
+            height: 30,
+            child: TextField(
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(bottom: 20),
+                hintText: 'Search your dream destination',
+                hintStyle: GoogleFonts.montserrat(
+                    color: Theme.of(context).secondaryHeaderColor,
+                    fontSize: 15),
+                border: InputBorder.none,
+              ),
+
+              style: GoogleFonts.montserrat(
+                  color: Theme.of(context).secondaryHeaderColor),
+              cursorColor: Theme.of(context).secondaryHeaderColor,
+              // onSubmitted: (value) {
+              //   _updateCity();
+              // },
+            ),
+          ),
+        ),
+        GestureDetector(
+          child: Icon(
+            Icons.close,
+            color: Theme.of(context).secondaryHeaderColor,
+          ),
+          onTap: () {
+            setState(() {
+              isSearchTapped = !isSearchTapped;
+            });
+          },
+        ),
       ],
     );
   }
@@ -246,9 +282,7 @@ class _HomeState extends State<Home> {
       itemBuilder: (BuildContext context, int index) {
         final currentitem = _getCurrentItems()[index];
 
-        // Determine the appropriate widget to use based on the selected menu index
         if (selectedMenuIndex == 0) {
-          // Destinations
           final destination = currentitem as OneDestination;
           return Padding(
             padding: EdgeInsets.only(
@@ -267,7 +301,6 @@ class _HomeState extends State<Home> {
             ),
           );
         } else if (selectedMenuIndex == 1) {
-          // Countries
           final country = currentitem as OneCountry;
           return Padding(
             padding: EdgeInsets.only(
@@ -285,8 +318,7 @@ class _HomeState extends State<Home> {
               isOneCountry: country.isOneCountry,
             ),
           );
-        } else if (selectedMenuIndex == 2) {
-          // Cities
+        } else {
           final city = currentitem as OneCity;
           return Padding(
             padding: EdgeInsets.only(
@@ -304,8 +336,6 @@ class _HomeState extends State<Home> {
               isOneCity: city.isOneCity,
             ),
           );
-        } else {
-          return Container(); // Fallback case
         }
       },
     );

@@ -7,8 +7,15 @@ import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/one_bookmark.dart'; // Ensure you have this package in your pubspec.yaml
 
 // ignore: must_be_immutable
-class Bookmarks extends StatelessWidget {
+class Bookmarks extends StatefulWidget {
   Bookmarks({super.key});
+
+  @override
+  State<Bookmarks> createState() => _BookmarksState();
+}
+
+class _BookmarksState extends State<Bookmarks> {
+  bool isSearchTapped = false;
 
   List<OneBookmark> bookmarks = [
     OneBookmark(
@@ -61,26 +68,9 @@ class Bookmarks extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 25, left: 30, right: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Your Bookmark",
-                    style: GoogleFonts.montserrat(
-                      color: Theme.of(context).secondaryHeaderColor,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  GestureDetector(
-                    child: SvgPicture.asset(
-                      'assets/icons/search.svg',
-                      color: Theme.of(context).secondaryHeaderColor,
-                    ),
-                    onTap: () {},
-                  ),
-                ],
-              ),
+              child: isSearchTapped
+                  ? _buildTextField(context)
+                  : _buildBookMarkRow(context),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 30, bottom: 10),
@@ -146,6 +136,74 @@ class Bookmarks extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildBookMarkRow(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          "Your Bookmark",
+          style: GoogleFonts.montserrat(
+            color: Theme.of(context).secondaryHeaderColor,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        GestureDetector(
+          child: SvgPicture.asset(
+            'assets/icons/search.svg',
+            color: Theme.of(context).secondaryHeaderColor,
+          ),
+          onTap: () {
+            setState(() {
+              isSearchTapped = !isSearchTapped;
+            });
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTextField(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Container(
+            height: 27,
+            child: TextField(
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(13),
+                hintText: 'Search your bookmarks',
+                hintStyle: GoogleFonts.montserrat(
+                    color: Theme.of(context).secondaryHeaderColor,
+                    fontSize: 15),
+                border: InputBorder.none,
+              ),
+
+              style: GoogleFonts.montserrat(
+                  color: Theme.of(context).secondaryHeaderColor),
+              cursorColor: Theme.of(context).secondaryHeaderColor,
+              // onSubmitted: (value) {
+              //   _updateCity();
+              // },
+            ),
+          ),
+        ),
+        GestureDetector(
+          child: Icon(
+            Icons.close,
+            color: Theme.of(context).secondaryHeaderColor,
+          ),
+          onTap: () {
+            setState(() {
+              isSearchTapped = !isSearchTapped;
+            });
+          },
+        ),
+      ],
     );
   }
 }
