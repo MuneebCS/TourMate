@@ -24,19 +24,19 @@ class _HomeState extends State<Home> {
   List<OneCity> cities = [
     OneCity(
         title: 'Aragua',
-        imageUrl: 'assets/images/B1.jpg',
+        imageUrl: 'assets/images/splahs1.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
         isOneCity: Icon(Icons.bookmark)),
     OneCity(
         title: 'London',
-        imageUrl: 'assets/images/B1.jpg',
+        imageUrl: 'assets/images/splash2.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
         isOneCity: Icon(Icons.bookmark)),
     OneCity(
         title: 'Paris',
-        imageUrl: 'assets/images/B1.jpg',
+        imageUrl: 'assets/images/splash3.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
         isOneCity: Icon(Icons.bookmark)),
@@ -45,13 +45,13 @@ class _HomeState extends State<Home> {
   List<OneDestination> destinations = [
     OneDestination(
         title: 'Aragua',
-        imageUrl: 'assets/images/B1.jpg',
+        imageUrl: 'assets/images/splash4.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
         isOneDestination: Icon(Icons.bookmark)),
     OneDestination(
         title: 'Aragua',
-        imageUrl: 'assets/images/B1.jpg',
+        imageUrl: 'assets/images/splash5.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
         isOneDestination: Icon(Icons.bookmark)),
@@ -66,19 +66,19 @@ class _HomeState extends State<Home> {
   List<OneCountry> countries = [
     OneCountry(
         title: 'Aragua',
-        imageUrl: 'assets/images/B1.jpg',
+        imageUrl: 'assets/images/B2.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
         isOneCountry: Icon(Icons.bookmark)),
     OneCountry(
         title: 'Aragua',
-        imageUrl: 'assets/images/B1.jpg',
+        imageUrl: 'assets/images/splash1.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
         isOneCountry: Icon(Icons.bookmark)),
     OneCountry(
         title: 'Aragua',
-        imageUrl: 'assets/images/B1.jpg',
+        imageUrl: 'assets/images/splash2.jpg',
         location: 'Nevsehir Markiz Turkey',
         rating: '4.5',
         isOneCountry: Icon(Icons.bookmark)),
@@ -243,7 +243,7 @@ class _HomeState extends State<Home> {
             height: 30,
             child: TextField(
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(bottom: 20),
+                contentPadding: EdgeInsets.only(bottom: 15),
                 hintText: 'Search your dream destination',
                 hintStyle: GoogleFonts.montserrat(
                     color: Theme.of(context).secondaryHeaderColor,

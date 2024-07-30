@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/single_booking.dart';
 
-class BookingList extends StatelessWidget {
+class BookingList extends StatefulWidget {
   const BookingList({super.key});
 
+  @override
+  State<BookingList> createState() => _BookingListState();
+}
+
+class _BookingListState extends State<BookingList> {
+  bool isSearchTapped = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,26 +35,9 @@ class BookingList extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(
                   left: 25, right: 25, top: kToolbarHeight),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Booking List",
-                    style: TextStyle(
-                      color: Theme.of(context).secondaryHeaderColor,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  IconButton(
-                    icon: ImageIcon(
-                      const AssetImage('assets/icons/search.png'),
-                      color: Theme.of(context).secondaryHeaderColor,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
+              child: isSearchTapped
+                  ? _buildTextField(context)
+                  : _buildBookingRow(context),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 25),
@@ -61,7 +52,7 @@ class BookingList extends StatelessWidget {
                   children: [
                     SingleBooking(
                       title: "Kuta Beach",
-                      imageUrl: 'assets/images/B1.jpg',
+                      imageUrl: 'assets/images/B2.jpg',
                       rating: '4.2',
                       status: "Cancelled",
                       duration: "4 Jan - 20 Jan",
@@ -81,7 +72,7 @@ class BookingList extends StatelessWidget {
                     ),
                     SingleBooking(
                       title: "Borobudur Temple",
-                      imageUrl: 'assets/images/B2.jpg',
+                      imageUrl: 'assets/images/B1.jpg',
                       rating: '4.2',
                       duration: "4 jan - 20 jan",
                       customButton: CustomButton(
@@ -122,6 +113,70 @@ class BookingList extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildBookingRow(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          "Booking List",
+          style: GoogleFonts.montserrat(
+            color: Theme.of(context).secondaryHeaderColor,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        GestureDetector(
+          child: SvgPicture.asset(
+            'assets/icons/search.svg',
+            color: Theme.of(context).secondaryHeaderColor,
+          ),
+          onTap: () {
+            setState(() {
+              isSearchTapped = !isSearchTapped;
+            });
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTextField(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Container(
+            height: 27,
+            child: TextField(
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(13),
+                hintText: 'Search your Booking list',
+                hintStyle: GoogleFonts.montserrat(
+                    color: Theme.of(context).secondaryHeaderColor,
+                    fontSize: 15),
+                border: InputBorder.none,
+              ),
+              style: GoogleFonts.montserrat(
+                  color: Theme.of(context).secondaryHeaderColor),
+              cursorColor: Theme.of(context).secondaryHeaderColor,
+            ),
+          ),
+        ),
+        GestureDetector(
+          child: Icon(
+            Icons.close,
+            color: Theme.of(context).secondaryHeaderColor,
+          ),
+          onTap: () {
+            setState(() {
+              isSearchTapped = !isSearchTapped;
+            });
+          },
+        ),
+      ],
     );
   }
 }

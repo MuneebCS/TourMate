@@ -20,21 +20,21 @@ class _BookmarksState extends State<Bookmarks> {
   List<OneBookmark> bookmarks = [
     OneBookmark(
       title: 'Goreme National Park',
-      imageUrl: 'assets/images/B2.jpg',
+      imageUrl: 'assets/images/splash5.jpg',
       location: 'Nevsehir Markiz Turkey',
       rating: '4.5',
       isOneBookmark: const Icon(Icons.bookmark),
     ),
     OneBookmark(
       title: 'Goreme National Park',
-      imageUrl: 'assets/images/B2.jpg',
+      imageUrl: 'assets/images/splash4.jpg',
       location: 'Nevsehir Markiz Turkey',
       rating: '4.5',
       isOneBookmark: const Icon(Icons.bookmark),
     ),
     OneBookmark(
       title: 'Goreme National Park',
-      imageUrl: 'assets/images/B2.jpg',
+      imageUrl: 'assets/images/splash3.jpg',
       location: 'Nevsehir Markiz Turkey',
       rating: '4.5',
       isOneBookmark: const Icon(Icons.bookmark),
@@ -182,13 +182,9 @@ class _BookmarksState extends State<Bookmarks> {
                     fontSize: 15),
                 border: InputBorder.none,
               ),
-
               style: GoogleFonts.montserrat(
                   color: Theme.of(context).secondaryHeaderColor),
               cursorColor: Theme.of(context).secondaryHeaderColor,
-              // onSubmitted: (value) {
-              //   _updateCity();
-              // },
             ),
           ),
         ),
