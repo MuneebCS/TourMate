@@ -71,6 +71,7 @@ class Settings extends StatelessWidget {
                   child: Column(
                     children: [
                       Setting(
+                        onPress: () => null,
                         customButton: CustomButton(
                             col: Colors.transparent,
                             c_height: 50,
@@ -88,17 +89,16 @@ class Settings extends StatelessWidget {
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
+                        onPress: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const BookingList(),
+                            )),
                         customButton: CustomButton(
                             col: Colors.transparent,
                             c_height: 50,
                             c_width: 50,
-                            onPress: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const BookingList(),
-                                  ));
-                            },
+                            onPress: () {},
                             child: Icon(
                               Icons.arrow_forward_ios_sharp,
                               color: Theme.of(context).cardColor,
@@ -111,6 +111,7 @@ class Settings extends StatelessWidget {
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
+                        onPress: () => null,
                         customButton: CustomButton(
                             col: Colors.transparent,
                             c_height: 50,
@@ -128,6 +129,7 @@ class Settings extends StatelessWidget {
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
+                        onPress: () => null,
                         customButton: CustomButton(
                             col: Colors.transparent,
                             c_height: 50,
@@ -145,6 +147,7 @@ class Settings extends StatelessWidget {
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
+                        onPress: () => null,
                         customButton: CustomButton(
                             col: Colors.transparent,
                             c_height: 50,
@@ -162,17 +165,18 @@ class Settings extends StatelessWidget {
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
+                        onPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Login(),
+                              ));
+                        },
                         customButton: CustomButton(
                             col: Colors.transparent,
                             c_height: 50,
                             c_width: 50,
-                            onPress: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Login(),
-                                  ));
-                            },
+                            onPress: () {},
                             child: Icon(
                               Icons.arrow_forward_ios_sharp,
                               color: Theme.of(context).cardColor,

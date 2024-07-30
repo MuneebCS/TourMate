@@ -4,10 +4,12 @@ import 'package:tourmate/widgets/custom_button.dart';
 class Setting extends StatefulWidget {
   final String settingName;
   final CustomButton customButton;
+  final VoidCallback? onPress;
 
   Setting({
     required this.settingName,
     required this.customButton,
+    this.onPress,
   });
 
   @override
@@ -20,6 +22,9 @@ class _SettingState extends State<Setting> {
   void _handleTap(bool isTapped) {
     setState(() {
       _isTapped = isTapped;
+      if (isTapped) {
+        widget.onPress!();
+      }
     });
   }
 

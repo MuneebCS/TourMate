@@ -20,9 +20,9 @@ class _SearchState extends State<Search> {
         children: [
           MyMap(),
           Padding(
-            padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
+            padding: const EdgeInsets.only(top: 60, left: 10, right: 10),
             child: Container(
-                height: 50,
+                height: 45,
                 width: screenWidth * 0.95,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
@@ -41,50 +41,47 @@ class _SearchState extends State<Search> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(bottom: 11),
-                                child: TextField(
-                                  style: GoogleFonts.roboto(
+                      padding:
+                          const EdgeInsets.only(left: 10, right: 10, bottom: 3),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: TextField(
+                                style: GoogleFonts.roboto(
+                                  color: Theme.of(context).secondaryHeaderColor,
+                                ),
+                                cursorColor:
+                                    Theme.of(context).secondaryHeaderColor,
+                                decoration: InputDecoration(
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent),
+                                  ),
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent),
+                                  ),
+                                  hintText: 'Search your dream destination',
+                                  hintStyle: GoogleFonts.roboto(
                                     color:
                                         Theme.of(context).secondaryHeaderColor,
-                                  ),
-                                  cursorColor:
-                                      Theme.of(context).secondaryHeaderColor,
-                                  decoration: InputDecoration(
-                                    enabledBorder: const UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.transparent),
-                                    ),
-                                    focusedBorder: const UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.transparent),
-                                    ),
-                                    hintText: 'Search your dream destination',
-                                    hintStyle: GoogleFonts.roboto(
-                                      color: Theme.of(context)
-                                          .secondaryHeaderColor,
-                                      fontSize: 15,
-                                    ),
+                                    fontSize: 15,
                                   ),
                                 ),
                               ),
                             ),
-                            GestureDetector(
-                              child: SvgPicture.asset(
-                                'assets/icons/search.svg',
-                                color: Theme.of(context).secondaryHeaderColor,
-                              ),
-                              onTap: () {},
+                          ),
+                          GestureDetector(
+                            child: SvgPicture.asset(
+                              'assets/icons/search.svg',
+                              color: Theme.of(context).secondaryHeaderColor,
                             ),
-                          ],
-                        ),
+                            onTap: () {},
+                          ),
+                        ],
                       ),
                     ),
                   ],

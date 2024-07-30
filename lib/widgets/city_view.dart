@@ -2,24 +2,22 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tourmate/widgets/custom_container.dart';
 import '../widgets/custom_button.dart';
 
 class OneCity extends StatelessWidget {
   final String title;
   final String imageUrl;
-  final String rating;
+
   final String location;
+  final double noOfDest;
   final CustomButton? customButton;
-  final Icon isOneCity;
 
   OneCity({
     required this.title,
     required this.imageUrl,
     required this.location,
-    required this.rating,
+    required this.noOfDest,
     this.customButton,
-    required this.isOneCity,
   });
 
   @override
@@ -45,52 +43,35 @@ class OneCity extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.black.withOpacity(0.65),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(9),
+            padding: EdgeInsets.all(9),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomContainer(
-                      height: 35,
-                      width: 55,
-                      borderRadius: 18,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.star_sharp,
-                              size: 14,
-                              color: Col1,
-                            ),
-                            const SizedBox(width: 4),
-                            Expanded(
-                              child: Text(
-                                rating,
-                                style: GoogleFonts.montserrat(
-                                    color: Col1,
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    Spacer(),
                     Icon(
-                      isOneCity.icon,
-                      color: Col1,
+                      Icons.location_on,
+                      size: 12,
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      location,
+                      style: GoogleFonts.montserrat(
+                        fontSize: 12,
+                        color: Colors.white,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
                     ),
                   ],
                 ),
-                const SizedBox(height: 100),
+                SizedBox(height: screenHeight * 0.4),
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -101,17 +82,26 @@ class OneCity extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),
-                const SizedBox(height: 20),
-                Text(
-                  location,
-                  style: GoogleFonts.montserrat(
-                    fontSize: 15,
-                    color: Colors.white,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
+                Row(
+                  children: [
+                    Icon(
+                      Icons.umbrella_sharp,
+                      size: 13,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      noOfDest.toString() + '+ Destinations',
+                      style: GoogleFonts.montserrat(
+                        fontSize: 12,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Spacer(),
+                  ],
                 ),
-                const Spacer(),
+                Spacer(),
                 Padding(
                   padding: EdgeInsets.only(left: screenWidth * 0.4),
                   child: Container(

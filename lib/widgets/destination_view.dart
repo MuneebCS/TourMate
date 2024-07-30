@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tourmate/widgets/custom_container.dart';
@@ -45,11 +43,11 @@ class OneDestination extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.black.withOpacity(0.65),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(9),
+            padding: EdgeInsets.all(9),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -61,7 +59,7 @@ class OneDestination extends StatelessWidget {
                       width: 55,
                       borderRadius: 18,
                       child: Padding(
-                        padding: const EdgeInsets.all(2),
+                        padding: EdgeInsets.all(2),
                         child: Row(
                           children: [
                             Icon(
@@ -69,7 +67,7 @@ class OneDestination extends StatelessWidget {
                               size: 14,
                               color: Col1,
                             ),
-                            const SizedBox(width: 4),
+                            SizedBox(width: 4),
                             Expanded(
                               child: Text(
                                 rating,
@@ -90,7 +88,7 @@ class OneDestination extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 100),
+                SizedBox(height: screenHeight * 0.35),
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -101,7 +99,7 @@ class OneDestination extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: screenHeight * 0.05),
                 Text(
                   location,
                   style: GoogleFonts.montserrat(
@@ -111,7 +109,7 @@ class OneDestination extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),
-                const Spacer(),
+                Spacer(),
                 Padding(
                   padding: EdgeInsets.only(left: screenWidth * 0.4),
                   child: Container(

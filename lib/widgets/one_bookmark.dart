@@ -45,7 +45,7 @@ class OneBookmark extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.black.withOpacity(0.65),
             ),
           ),
           Padding(
