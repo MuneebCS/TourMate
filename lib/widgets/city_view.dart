@@ -22,7 +22,6 @@ class OneCity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var Col1 = Theme.of(context).secondaryHeaderColor;
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
 

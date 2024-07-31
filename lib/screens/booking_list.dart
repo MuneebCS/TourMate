@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tourmate/screens/booking_detail_page.dart';
 import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/single_booking.dart';
 
@@ -60,7 +61,17 @@ class _BookingListState extends State<BookingList> {
                         col: Colors.transparent,
                         c_height: 50,
                         c_width: 100,
-                        onPress: () {},
+                        onPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookingDetail(
+                                    title: "Kuta Beach",
+                                    location: "Paris France",
+                                    imageUrl: 'assets/images/B2.jpg',
+                                    rating: '4.2'),
+                              ));
+                        },
                         child: Icon(
                           Icons.arrow_forward,
                           color: Theme.of(context).secondaryHeaderColor,
@@ -79,7 +90,18 @@ class _BookingListState extends State<BookingList> {
                         col: Colors.transparent,
                         c_height: 50,
                         c_width: 100,
-                        onPress: () {},
+                        onPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookingDetail(
+                                  location: "Paris France",
+                                  title: "Borobudur Temple",
+                                  imageUrl: 'assets/images/B1.jpg',
+                                  rating: '4.2',
+                                ),
+                              ));
+                        },
                         child: Icon(
                           Icons.arrow_forward,
                           color: Theme.of(context).secondaryHeaderColor,
@@ -99,7 +121,18 @@ class _BookingListState extends State<BookingList> {
                         col: Colors.transparent,
                         c_height: 50,
                         c_width: 100,
-                        onPress: () {},
+                        onPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookingDetail(
+                                  location: "Paris France",
+                                  title: "Goreme National Park",
+                                  imageUrl: 'assets/images/splash1.jpg',
+                                  rating: '4.2',
+                                ),
+                              ));
+                        },
                         child: Icon(
                           Icons.arrow_forward,
                           color: Theme.of(context).secondaryHeaderColor,
@@ -152,7 +185,7 @@ class _BookingListState extends State<BookingList> {
             height: 27,
             child: TextField(
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(13),
+                contentPadding: const EdgeInsets.all(13),
                 hintText: 'Search your Booking list',
                 hintStyle: GoogleFonts.montserrat(
                     color: Theme.of(context).secondaryHeaderColor,

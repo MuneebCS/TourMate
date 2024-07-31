@@ -25,62 +25,65 @@ class _HomeState extends State<Home> {
     OneCity(
       title: 'Aragua',
       imageUrl: 'assets/images/splash1.jpg',
-      location: 'Nevsehir Markiz Turkey',
+      location: 'Aragua, Venezuela',
       noOfDest: 12.0,
     ),
     OneCity(
       title: 'London',
       imageUrl: 'assets/images/splash2.jpg',
-      location: 'Nevsehir Markiz Turkey',
+      location: 'London, United Kingdom',
       noOfDest: 12.0,
     ),
     OneCity(
       title: 'Paris',
       imageUrl: 'assets/images/splash3.jpg',
-      location: 'Nevsehir Markiz Turkey',
+      location: 'Paris, France',
       noOfDest: 12.0,
     ),
   ];
 
   List<OneDestination> destinations = [
     OneDestination(
-        title: 'Aragua',
-        imageUrl: 'assets/images/splash4.jpg',
-        location: 'Nevsehir Markiz Turkey',
-        rating: '4.5',
-        isOneDestination: const Icon(Icons.bookmark)),
+      title: 'Pamukkale',
+      imageUrl: 'assets/images/splash4.jpg',
+      location: 'Denizli, Turkey',
+      rating: '4.5',
+      isOneDestination: const Icon(Icons.bookmark),
+    ),
     OneDestination(
-        title: 'Aragua',
-        imageUrl: 'assets/images/splash5.jpg',
-        location: 'Nevsehir Markiz Turkey',
-        rating: '4.5',
-        isOneDestination: const Icon(Icons.bookmark)),
+      title: 'Pyramids of Giza',
+      imageUrl: 'assets/images/splash5.jpg',
+      location: 'Giza, Egypt',
+      rating: '4.5',
+      isOneDestination: const Icon(Icons.bookmark),
+    ),
     OneDestination(
-        title: 'Aragua',
-        imageUrl: 'assets/images/B1.jpg',
-        location: 'Nevsehir Markiz Turkey',
-        rating: '4.5',
-        isOneDestination: const Icon(Icons.bookmark)),
+      title: 'Aragua',
+      imageUrl: 'assets/images/B1.jpg',
+      location: 'Aragua, Venezuela',
+      rating: '4.5',
+      isOneDestination: const Icon(Icons.bookmark),
+    ),
   ];
 
   List<OneCountry> countries = [
     OneCountry(
       title: 'Indonesia',
       imageUrl: 'assets/images/B1.jpg',
-      location: 'Nevsehir Markiz Turkey',
-      noOfDest: 12.0,
+      location: 'Indonesia',
+      noOfDest: 112.0,
     ),
     OneCountry(
       title: 'New York',
       imageUrl: 'assets/images/B2.jpg',
-      location: 'Nevsehir Markiz Turkey',
-      noOfDest: 12.0,
+      location: 'New York, USA',
+      noOfDest: 120.0,
     ),
     OneCountry(
       title: 'England',
       imageUrl: 'assets/images/splash5.jpg',
-      location: 'Nevsehir Markiz Turkey',
-      noOfDest: 12.0,
+      location: 'England, United Kingdom',
+      noOfDest: 72.0,
     ),
   ];
 
@@ -146,7 +149,7 @@ class _HomeState extends State<Home> {
                   : _buildRecommendationRow(context),
             ),
             const Padding(
-              padding: const EdgeInsets.only(left: 30, top: 5),
+              padding: EdgeInsets.only(left: 30, top: 5),
               child: Divider(thickness: 2),
             ),
             Expanded(
@@ -257,7 +260,7 @@ class _HomeState extends State<Home> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
-          child: Container(
+          child: SizedBox(
             height: 30,
             child: TextField(
               decoration: InputDecoration(

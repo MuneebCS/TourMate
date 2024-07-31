@@ -5,6 +5,7 @@ ThemeData DarkTheme = ThemeData(
   useMaterial3: false,
   brightness: Brightness.dark,
   primaryColor: const Color(0xFF133136),
+  // primaryColor: const Color(0xFFFFE8C8),
   secondaryHeaderColor: const Color(0xFFE1A25A),
   cardColor: const Color(0xFF164449),
   hintColor: const Color(0xFFB5A696),

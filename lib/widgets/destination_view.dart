@@ -88,7 +88,7 @@ class OneDestination extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.35),
+                SizedBox(height: screenHeight * 0.3),
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -99,7 +99,7 @@ class OneDestination extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),
-                SizedBox(height: screenHeight * 0.05),
+                SizedBox(height: screenHeight * 0.02),
                 Text(
                   location,
                   style: GoogleFonts.montserrat(

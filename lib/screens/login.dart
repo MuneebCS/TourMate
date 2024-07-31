@@ -8,6 +8,8 @@ import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/custom_textfield.dart';
 
 class Login extends StatefulWidget {
+  const Login({super.key});
+
   @override
   State<Login> createState() => _LoginState();
 }

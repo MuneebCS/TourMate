@@ -6,6 +6,8 @@ import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/custom_textfield.dart';
 
 class Register extends StatefulWidget {
+  const Register({super.key});
+
   @override
   State<Register> createState() => _RegisterState();
 }
