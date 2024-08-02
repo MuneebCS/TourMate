@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:tourmate/screens/settings.dart';
 import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/menu_bar.dart';
-import '../providers/city_provider.dart';
+import '../providers/search_filter_provider.dart';
 import '../widgets/city_view.dart';
 import '../widgets/country_view.dart';
 import '../widgets/destination_view.dart';
@@ -45,6 +45,7 @@ class _HomeState extends State<Home> {
   List<dynamic> _getFilteredItems() {
     final searchQuery = _searchQuery.value.toLowerCase();
     final searchProvider = Provider.of<SearchProvider>(context, listen: false);
+
     List<dynamic> items;
 
     switch (selectedMenuIndex) {
@@ -71,6 +72,8 @@ class _HomeState extends State<Home> {
     }
   }
 
+  final TextEditingController searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
@@ -96,7 +99,7 @@ class _HomeState extends State<Home> {
               child: isSearchTapped
                   ? Padding(
                       padding: const EdgeInsets.only(top: 12),
-                      child: _buildTextField(),
+                      child: _buildTextField(searchController),
                     )
                   : _buildRecommendationRow(context),
             ),
@@ -207,7 +210,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _buildTextField() {
+  Widget _buildTextField(TextEditingController controller) {
     return ValueListenableBuilder<String>(
       valueListenable: _searchQuery,
       builder: (context, query, child) {
@@ -218,8 +221,10 @@ class _HomeState extends State<Home> {
               child: SizedBox(
                 height: 30,
                 child: TextField(
+                  controller: controller,
                   onChanged: (value) {
-                    _searchQuery.value = value;
+                    _searchQuery.value = value.trim();
+                    controller.text = controller.text.trim();
                   },
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.only(bottom: 15),
