@@ -49,7 +49,7 @@ class OneBookmark extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(9),
+            padding: const EdgeInsets.all(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -76,6 +76,7 @@ class OneBookmark extends StatelessWidget {
                                 style: GoogleFonts.montserrat(
                                   color: Col1,
                                   fontSize: 11,
+                                  fontWeight: FontWeight.w600,
                                 ),
                                 overflow: TextOverflow.ellipsis,
                               ),

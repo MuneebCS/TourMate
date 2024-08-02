@@ -47,7 +47,7 @@ class OneDestination extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(9),
+            padding: EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -74,6 +74,7 @@ class OneDestination extends StatelessWidget {
                                 style: GoogleFonts.montserrat(
                                   color: Col1,
                                   fontSize: 11,
+                                  fontWeight: FontWeight.w600,
                                 ),
                                 overflow: TextOverflow.ellipsis,
                               ),

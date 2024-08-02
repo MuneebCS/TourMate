@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:tourmate/screens/booking_list.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:tourmate/screens/homescreen.dart';
+import 'package:tourmate/screens/onboarding_screen.dart';
 
 import 'package:tourmate/theme/dark_theme.dart';
 
+import 'providers/city_provider.dart';
+
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) {
+    runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => SearchProvider()),
+        ],
+        child: MyApp(),
+      ),
+    );
+  });
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -46,7 +46,7 @@ class OneCountry extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(9),
+            padding: EdgeInsets.all(11),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -62,9 +62,9 @@ class OneCountry extends StatelessWidget {
                     Text(
                       location,
                       style: GoogleFonts.montserrat(
-                        fontSize: 12,
-                        color: Colors.white,
-                      ),
+                          fontSize: 13,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                     ),

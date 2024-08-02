@@ -46,7 +46,7 @@ class OneCity extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(9),
+            padding: EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -56,15 +56,15 @@ class OneCity extends StatelessWidget {
                     Spacer(),
                     Icon(
                       Icons.location_on,
-                      size: 12,
+                      size: 13,
                     ),
                     SizedBox(width: 4),
                     Text(
                       location,
                       style: GoogleFonts.montserrat(
-                        fontSize: 12,
-                        color: Colors.white,
-                      ),
+                          fontSize: 13,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                     ),

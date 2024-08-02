@@ -2,9 +2,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:tourmate/screens/settings.dart';
 import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/menu_bar.dart';
+import '../providers/city_provider.dart';
 import '../widgets/city_view.dart';
 import '../widgets/country_view.dart';
 import '../widgets/destination_view.dart';
@@ -18,85 +20,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final PageController _pageController = PageController(viewportFraction: 0.9);
+  final ValueNotifier<String> _searchQuery = ValueNotifier<String>('');
 
   int selectedMenuIndex = 0;
   bool isSearchTapped = false;
-  List<OneCity> cities = [
-    OneCity(
-      title: 'Aragua',
-      imageUrl: 'assets/images/splash1.jpg',
-      location: 'Aragua, Venezuela',
-      noOfDest: 12.0,
-    ),
-    OneCity(
-      title: 'London',
-      imageUrl: 'assets/images/splash2.jpg',
-      location: 'London, United Kingdom',
-      noOfDest: 12.0,
-    ),
-    OneCity(
-      title: 'Paris',
-      imageUrl: 'assets/images/splash3.jpg',
-      location: 'Paris, France',
-      noOfDest: 12.0,
-    ),
-  ];
-
-  List<OneDestination> destinations = [
-    OneDestination(
-      title: 'Pamukkale',
-      imageUrl: 'assets/images/splash4.jpg',
-      location: 'Denizli, Turkey',
-      rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
-    ),
-    OneDestination(
-      title: 'Pyramids of Giza',
-      imageUrl: 'assets/images/splash5.jpg',
-      location: 'Giza, Egypt',
-      rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
-    ),
-    OneDestination(
-      title: 'Aragua',
-      imageUrl: 'assets/images/B1.jpg',
-      location: 'Aragua, Venezuela',
-      rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
-    ),
-  ];
-
-  List<OneCountry> countries = [
-    OneCountry(
-      title: 'Indonesia',
-      imageUrl: 'assets/images/B1.jpg',
-      location: 'Indonesia',
-      noOfDest: 112.0,
-    ),
-    OneCountry(
-      title: 'New York',
-      imageUrl: 'assets/images/B2.jpg',
-      location: 'New York, USA',
-      noOfDest: 120.0,
-    ),
-    OneCountry(
-      title: 'England',
-      imageUrl: 'assets/images/splash5.jpg',
-      location: 'England, United Kingdom',
-      noOfDest: 72.0,
-    ),
-  ];
 
   void _scrollToNextPage() {
     if (_pageController.hasClients) {
       final int nextPage = _pageController.page!.toInt() + 1;
-      if (nextPage < _getCurrentItems().length) {
-        _pageController.animateToPage(
-          nextPage,
-          duration: const Duration(milliseconds: 250),
-          curve: Curves.easeInOut,
-        );
-      }
+      _pageController.animateToPage(
+        nextPage,
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeInOut,
+      );
     }
   }
 
@@ -106,16 +42,32 @@ class _HomeState extends State<Home> {
     });
   }
 
-  List<dynamic> _getCurrentItems() {
+  List<dynamic> _getFilteredItems() {
+    final searchQuery = _searchQuery.value.toLowerCase();
+    final searchProvider = Provider.of<SearchProvider>(context, listen: false);
+    List<dynamic> items;
+
     switch (selectedMenuIndex) {
       case 0:
-        return destinations;
+        items = searchProvider.destinations;
+        break;
       case 1:
-        return countries;
+        items = searchProvider.countries;
+        break;
       case 2:
-        return cities;
+        items = searchProvider.cities;
+        break;
       default:
-        return cities;
+        items = searchProvider.cities;
+    }
+
+    if (searchQuery.isEmpty) {
+      return items;
+    } else {
+      return items.where((item) {
+        final itemTitle = item.title.toLowerCase();
+        return itemTitle.contains(searchQuery);
+      }).toList();
     }
   }
 
@@ -144,7 +96,7 @@ class _HomeState extends State<Home> {
               child: isSearchTapped
                   ? Padding(
                       padding: const EdgeInsets.only(top: 12),
-                      child: _buildTextField(context),
+                      child: _buildTextField(),
                     )
                   : _buildRecommendationRow(context),
             ),
@@ -255,103 +207,118 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _buildTextField(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          child: SizedBox(
-            height: 30,
-            child: TextField(
-              decoration: InputDecoration(
-                contentPadding: const EdgeInsets.only(bottom: 15),
-                hintText: 'Search your dream destination',
-                hintStyle: GoogleFonts.montserrat(
-                    color: Theme.of(context).secondaryHeaderColor,
-                    fontSize: 15),
-                border: InputBorder.none,
+  Widget _buildTextField() {
+    return ValueListenableBuilder<String>(
+      valueListenable: _searchQuery,
+      builder: (context, query, child) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: SizedBox(
+                height: 30,
+                child: TextField(
+                  onChanged: (value) {
+                    _searchQuery.value = value;
+                  },
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.only(bottom: 15),
+                    hintText: 'Search your dream destination',
+                    hintStyle: GoogleFonts.montserrat(
+                        color: Theme.of(context).secondaryHeaderColor,
+                        fontSize: 15),
+                    border: InputBorder.none,
+                  ),
+                  style: GoogleFonts.montserrat(
+                      color: Theme.of(context).secondaryHeaderColor),
+                  cursorColor: Theme.of(context).secondaryHeaderColor,
+                ),
               ),
-              style: GoogleFonts.montserrat(
-                  color: Theme.of(context).secondaryHeaderColor),
-              cursorColor: Theme.of(context).secondaryHeaderColor,
             ),
-          ),
-        ),
-        GestureDetector(
-          child: Icon(
-            Icons.close,
-            color: Theme.of(context).secondaryHeaderColor,
-          ),
-          onTap: () {
-            setState(() {
-              isSearchTapped = !isSearchTapped;
-            });
-          },
-        ),
-      ],
+            GestureDetector(
+              child: Icon(
+                Icons.close,
+                color: Theme.of(context).secondaryHeaderColor,
+              ),
+              onTap: () {
+                _searchQuery.value = '';
+                setState(() {
+                  isSearchTapped = !isSearchTapped;
+                });
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 
   Widget _buildPageView(double screenWidth, BuildContext context) {
-    return PageView.builder(
-      controller: _pageController,
-      itemCount: _getCurrentItems().length,
-      itemBuilder: (BuildContext context, int index) {
-        final currentitem = _getCurrentItems()[index];
+    return ValueListenableBuilder<String>(
+      valueListenable: _searchQuery,
+      builder: (context, query, child) {
+        final filteredItems = _getFilteredItems();
+        return PageView.builder(
+          controller: _pageController,
+          itemCount: filteredItems.length,
+          itemBuilder: (BuildContext context, int index) {
+            final currentitem = filteredItems[index];
 
-        if (selectedMenuIndex == 0) {
-          final destination = currentitem as OneDestination;
-          return Padding(
-            padding: EdgeInsets.only(
-              left: index == 0 ? 0 : 5,
-              right: index == _getCurrentItems().length - 1 ? 0 : 5,
-            ),
-            child: OneDestination(
-              title: destination.title,
-              imageUrl: destination.imageUrl,
-              location: destination.location,
-              rating: destination.rating,
-              customButton: index < _getCurrentItems().length - 1
-                  ? _buildNextButton(screenWidth, context)
-                  : null,
-              isOneDestination: destination.isOneDestination,
-            ),
-          );
-        } else if (selectedMenuIndex == 1) {
-          final country = currentitem as OneCountry;
-          return Padding(
-            padding: EdgeInsets.only(
-              left: index == 0 ? 0 : 5,
-              right: index == _getCurrentItems().length - 1 ? 0 : 5,
-            ),
-            child: OneCountry(
-              title: country.title,
-              imageUrl: country.imageUrl,
-              location: country.location,
-              noOfDest: country.noOfDest,
-              customButton: index < _getCurrentItems().length - 1
-                  ? _buildNextButton(screenWidth, context)
-                  : null,
-            ),
-          );
-        } else {
-          final city = currentitem as OneCity;
-          return Padding(
-            padding: EdgeInsets.only(
-              left: index == 0 ? 0 : 5,
-              right: index == _getCurrentItems().length - 1 ? 0 : 5,
-            ),
-            child: OneCity(
-              title: city.title,
-              imageUrl: city.imageUrl,
-              location: city.location,
-              noOfDest: city.noOfDest,
-              customButton: index < _getCurrentItems().length - 1
-                  ? _buildNextButton(screenWidth, context)
-                  : null,
-            ),
-          );
-        }
+            if (selectedMenuIndex == 0) {
+              final destination = currentitem as OneDestination;
+              return Padding(
+                padding: EdgeInsets.only(
+                  left: index == 0 ? 0 : 5,
+                  right: index == filteredItems.length - 1 ? 0 : 5,
+                ),
+                child: OneDestination(
+                  title: destination.title,
+                  imageUrl: destination.imageUrl,
+                  location: destination.location,
+                  rating: destination.rating,
+                  customButton: index < filteredItems.length - 1
+                      ? _buildNextButton(screenWidth, context)
+                      : null,
+                  isOneDestination: destination.isOneDestination,
+                ),
+              );
+            } else if (selectedMenuIndex == 1) {
+              final country = currentitem as OneCountry;
+              return Padding(
+                padding: EdgeInsets.only(
+                  left: index == 0 ? 0 : 5,
+                  right: index == filteredItems.length - 1 ? 0 : 5,
+                ),
+                child: OneCountry(
+                  title: country.title,
+                  imageUrl: country.imageUrl,
+                  location: country.location,
+                  noOfDest: country.noOfDest,
+                  customButton: index < filteredItems.length - 1
+                      ? _buildNextButton(screenWidth, context)
+                      : null,
+                ),
+              );
+            } else {
+              final city = currentitem as OneCity;
+              return Padding(
+                padding: EdgeInsets.only(
+                  left: index == 0 ? 0 : 5,
+                  right: index == filteredItems.length - 1 ? 0 : 5,
+                ),
+                child: OneCity(
+                  title: city.title,
+                  noOfDest: city.noOfDest,
+                  imageUrl: city.imageUrl,
+                  location: city.location,
+                  customButton: index < filteredItems.length - 1
+                      ? _buildNextButton(screenWidth, context)
+                      : null,
+                ),
+              );
+            }
+          },
+        );
       },
     );
   }
