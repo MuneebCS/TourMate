@@ -8,7 +8,7 @@ import 'splash3.dart';
 import 'splash4.dart';
 
 class ONBoarding extends StatefulWidget {
-  const ONBoarding({super.key});
+  ONBoarding({super.key});
 
   @override
   _ONBoardingState createState() => _ONBoardingState();
@@ -60,30 +60,31 @@ class _ONBoardingState extends State<ONBoarding> {
                 bottom: screenHeight * 0.02,
                 right: screenWidth * 0.05,
                 child: CustomButton(
-                  c_height: 60,
-                  c_width: 60,
+                  c_height: screenHeight * 0.08,
+                  c_width: screenWidth * 0.21,
                   col: Theme.of(context).secondaryHeaderColor,
                   onPress: () {
                     _controller.nextPage(
-                      duration: const Duration(milliseconds: 300),
+                      duration: Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                     );
                   },
-                  child: const Icon(Icons.arrow_forward),
+                  child: Icon(Icons.arrow_forward,
+                      color: Theme.of(context).primaryColor),
                 ))
           else if (_currentPage == 2)
             Positioned(
                 bottom: screenHeight * 0.02,
                 right: screenWidth * 0.05,
                 child: CustomButton(
-                  c_height: 60,
-                  c_width: 90,
+                  c_height: screenHeight * 0.08,
+                  c_width: screenWidth * 0.31,
                   col: Theme.of(context).secondaryHeaderColor,
                   onPress: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Login(),
+                        builder: (context) => Login(),
                       ),
                     );
                   },

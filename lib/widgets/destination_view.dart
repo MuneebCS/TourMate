@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tourmate/widgets/custom_container.dart';
+import 'package:provider/provider.dart';
+import '../providers/bookmark_filter_provider.dart';
 import '../widgets/custom_button.dart';
+import '../widgets/custom_container.dart';
 
 class OneDestination extends StatelessWidget {
   final String title;
@@ -9,7 +11,6 @@ class OneDestination extends StatelessWidget {
   final String rating;
   final String location;
   final CustomButton? customButton;
-  final Icon isOneDestination;
 
   OneDestination({
     required this.title,
@@ -17,111 +18,124 @@ class OneDestination extends StatelessWidget {
     required this.location,
     required this.rating,
     this.customButton,
-    required this.isOneDestination,
   });
 
   @override
   Widget build(BuildContext context) {
-    var Col1 = Theme.of(context).secondaryHeaderColor;
+    var color1 = Theme.of(context).secondaryHeaderColor;
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
 
-    return Container(
-      width: screenWidth * 0.81,
-      height: screenHeight * 0.95,
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.asset(
-              imageUrl,
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.black.withOpacity(0.65),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Consumer<BookmarkProvider>(
+      builder: (context, bookmarkProvider, child) {
+        bool isBookmarked = bookmarkProvider.isBookmark(this);
+
+        return Container(
+          width: screenWidth * 0.81,
+          height: screenHeight * 0.95,
+          child: Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: double.infinity,
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.black.withOpacity(0.65),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomContainer(
-                      height: 35,
-                      width: 55,
-                      borderRadius: 18,
-                      child: Padding(
-                        padding: EdgeInsets.all(2),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.star_sharp,
-                              size: 14,
-                              color: Col1,
-                            ),
-                            SizedBox(width: 4),
-                            Expanded(
-                              child: Text(
-                                rating,
-                                style: GoogleFonts.montserrat(
-                                  color: Col1,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w600,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomContainer(
+                          height: 35,
+                          width: 55,
+                          borderRadius: 18,
+                          child: Padding(
+                            padding: const EdgeInsets.all(2),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.star_sharp,
+                                  size: 14,
+                                  color: color1,
                                 ),
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                                const SizedBox(width: 4),
+                                Expanded(
+                                  child: Text(
+                                    rating,
+                                    style: GoogleFonts.montserrat(
+                                      color: color1,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                        GestureDetector(
+                          onTap: () {
+                            bookmarkProvider.toggleBookmark(this);
+                          },
+                          child: Icon(
+                            isBookmarked
+                                ? Icons.bookmark
+                                : Icons.bookmark_border,
+                            color: color1,
+                            size: 24,
+                          ),
+                        ),
+                      ],
                     ),
-                    Icon(
-                      isOneDestination.icon,
-                      color: Col1,
+                    const SizedBox(height: 100),
+                    Text(
+                      title,
+                      style: GoogleFonts.montserrat(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 32,
+                        color: Colors.white,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      location,
+                      style: GoogleFonts.montserrat(
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
+                    ),
+                    const Spacer(),
+                    Padding(
+                      padding: EdgeInsets.only(left: screenWidth * 0.4),
+                      child: Container(
+                        child: customButton,
+                      ),
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.3),
-                Text(
-                  title,
-                  style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
-                    color: Colors.white,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
-                ),
-                SizedBox(height: screenHeight * 0.02),
-                Text(
-                  location,
-                  style: GoogleFonts.montserrat(
-                    fontSize: 15,
-                    color: Colors.white,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
-                ),
-                Spacer(),
-                Padding(
-                  padding: EdgeInsets.only(left: screenWidth * 0.4),
-                  child: Container(
-                    child: customButton,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

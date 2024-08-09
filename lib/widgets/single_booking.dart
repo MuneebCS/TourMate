@@ -11,7 +11,8 @@ class SingleBooking extends StatelessWidget {
   final String? status;
   final CustomButton? customButton;
 
-  SingleBooking({
+  const SingleBooking({
+    super.key,
     required this.title,
     required this.imageUrl,
     required this.rating,

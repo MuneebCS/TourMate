@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tourmate/widgets/map_view.dart';
 
 class Search extends StatefulWidget {
+  const Search({super.key});
+
   @override
   State<Search> createState() => _SearchState();
 }

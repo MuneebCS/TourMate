@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/custom_button.dart';
@@ -46,19 +44,19 @@ class OneCity extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Spacer(),
-                    Icon(
+                    const Spacer(),
+                    const Icon(
                       Icons.location_on,
                       size: 13,
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Text(
                       location,
                       style: GoogleFonts.montserrat(
@@ -70,7 +68,7 @@ class OneCity extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.4),
+                SizedBox(height: screenHeight * 0.35),
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -83,11 +81,11 @@ class OneCity extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.umbrella_sharp,
                       size: 13,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 4,
                     ),
                     Text(
@@ -97,10 +95,10 @@ class OneCity extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 Padding(
                   padding: EdgeInsets.only(left: screenWidth * 0.4),
                   child: Container(

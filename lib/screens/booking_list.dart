@@ -65,7 +65,7 @@ class _BookingListState extends State<BookingList> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => BookingDetail(
+                                builder: (context) => const BookingDetail(
                                     title: "Kuta Beach",
                                     location: "Paris France",
                                     imageUrl: 'assets/images/B2.jpg',
@@ -94,7 +94,7 @@ class _BookingListState extends State<BookingList> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => BookingDetail(
+                                builder: (context) => const BookingDetail(
                                   location: "Paris France",
                                   title: "Borobudur Temple",
                                   imageUrl: 'assets/images/B1.jpg',
@@ -125,7 +125,7 @@ class _BookingListState extends State<BookingList> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => BookingDetail(
+                                builder: (context) => const BookingDetail(
                                   location: "Paris France",
                                   title: "Goreme National Park",
                                   imageUrl: 'assets/images/splash1.jpg',

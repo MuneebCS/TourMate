@@ -13,8 +13,8 @@ class _MyMapState extends State<MyMap> {
 
   @override
   Widget build(BuildContext context) {
-    final lat = 30.546191;
-    final lon = 78.761761;
+    const lat = 30.546191;
+    const lon = 78.761761;
     final initialCoordinates = LatLng(lat, lon);
 
     return Container(

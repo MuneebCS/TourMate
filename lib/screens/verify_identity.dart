@@ -75,7 +75,7 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                               .textTheme
                               .displayLarge
                               ?.copyWith(
-                                fontSize: 50,
+                                fontSize: 45,
                               ),
                         ),
                         TextSpan(
@@ -84,7 +84,7 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                               .textTheme
                               .displayLarge
                               ?.copyWith(
-                                fontSize: 50,
+                                fontSize: 45,
                               ),
                         ),
                       ],
@@ -125,10 +125,10 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                     children: [
                       Text(
                         "Didn't receive the code? ",
-                        style: GoogleFonts.roboto(
-                          color: Colors.white,
-                          fontSize: 12,
-                        ),
+                        style:
+                            Theme.of(context).textTheme.displayLarge?.copyWith(
+                                  fontSize: 12,
+                                ),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -144,7 +144,7 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                       ),
                     ],
                   ),
-                  SizedBox(height: screenHeight * 0.07),
+                  SizedBox(height: screenHeight * 0.1),
                   Center(
                     child: CustomButton(
                       c_height: 50,
@@ -171,10 +171,10 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                     children: [
                       Text(
                         "By registering you agree to our ",
-                        style: GoogleFonts.roboto(
-                          color: Colors.white,
-                          fontSize: 10,
-                        ),
+                        style:
+                            Theme.of(context).textTheme.displayLarge?.copyWith(
+                                  fontSize: 10,
+                                ),
                       ),
                       GestureDetector(
                         onTap: () {

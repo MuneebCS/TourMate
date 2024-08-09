@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tourmate/screens/booking_list.dart';
 import 'package:tourmate/widgets/custom_button.dart';
 
+import '../providers/theme_provider.dart';
 import '../widgets/setting.dart';
 import 'login.dart';
 
 class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     var screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Padding(
         padding: const EdgeInsets.only(left: 30, right: 30, top: 50),
-        child: Container(
+        child: SizedBox(
           width: screenWidth,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +74,27 @@ class Settings extends StatelessWidget {
                   child: Column(
                     children: [
                       Setting(
-                        onPress: () => null,
+                        onPress: () {
+                          themeProvider.toggleTheme();
+                        },
+                        customButton: CustomButton(
+                            col: Colors.transparent,
+                            c_height: 50,
+                            c_width: 50,
+                            onPress: () {},
+                            child: Icon(
+                              Icons.arrow_forward_ios_sharp,
+                              color: Theme.of(context).cardColor,
+                            )),
+                        settingName: "Light Theme",
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2, right: 2),
+                        child: Divider(
+                            thickness: 1, color: Theme.of(context).cardColor),
+                      ),
+                      Setting(
+                        onPress: () {},
                         customButton: CustomButton(
                             col: Colors.transparent,
                             c_height: 50,
@@ -111,7 +134,7 @@ class Settings extends StatelessWidget {
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
-                        onPress: () => null,
+                        onPress: () {},
                         customButton: CustomButton(
                             col: Colors.transparent,
                             c_height: 50,
@@ -129,7 +152,7 @@ class Settings extends StatelessWidget {
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
-                        onPress: () => null,
+                        onPress: () {},
                         customButton: CustomButton(
                             col: Colors.transparent,
                             c_height: 50,
@@ -147,7 +170,7 @@ class Settings extends StatelessWidget {
                             thickness: 1, color: Theme.of(context).cardColor),
                       ),
                       Setting(
-                        onPress: () => null,
+                        onPress: () {},
                         customButton: CustomButton(
                             col: Colors.transparent,
                             c_height: 50,

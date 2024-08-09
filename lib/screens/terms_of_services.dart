@@ -60,7 +60,7 @@ class TermsOfServices extends StatelessWidget {
               Divider(
                 color: Theme.of(context).cardColor,
               ),
-              Expanded(
+              const Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -71,7 +71,7 @@ class TermsOfServices extends StatelessWidget {
                             "By using this Site, you agree to be bound by, and to comply with, these Terms and Conditions. If you do not agree to these Terms and Conditions, please do not use this site.\n\n"
                             "PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or otherwise alter these Terms and Conditions at any time. Unless otherwise indicated, amendments will become effective immediately. Please review these Terms and Conditions periodically. Your continued use of the Site following the posting of changes and/or modifications will itute your acceptance of the revised Terms and Conditions and the reasonableness of these standards for notice of changes. For your information, this page was last updated as of the date at the top of these terms and conditions.",
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
                       Service(
@@ -80,7 +80,7 @@ class TermsOfServices extends StatelessWidget {
                         desc:
                             "Please review our Privacy Policy, which also governs your visit to this Site, to understand our practices.",
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
                       Service(
@@ -89,16 +89,16 @@ class TermsOfServices extends StatelessWidget {
                         desc:
                             "When you visit this Site or send emails to us, you are communicating with us electronically. You consent to receive communications from us electronically. We will communicate with you by email or by posting notices on this Site. You agree that all agreements, notices, disclosures, and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing.",
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
-                      Service(
+                      const Service(
                         count: "4.",
                         Head: "COPYRIGHT",
                         desc:
                             "All content included on this Site, such as text, graphics, logos, button icons, images, audio clips, digital downloads, data compilations, and software, is the property of this Site or its content suppliers and protected by international copyright laws. The compilation of all content on this Site is the exclusive property of this Site, with copyright authorship for this collection by this Site, and protected by international copyright laws.",
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
                       Service(

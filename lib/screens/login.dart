@@ -8,7 +8,7 @@ import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/custom_textfield.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();
@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-
+    var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
@@ -69,19 +69,18 @@ class _LoginState extends State<Login> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                const SizedBox(height: 200),
+                SizedBox(height: screenHeight * 0.35),
                 Padding(
                   padding: const EdgeInsets.only(right: 200),
                   child: Text(
                     "Login",
-                    style: GoogleFonts.roboto(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                 ),
-                const SizedBox(height: 70),
+                SizedBox(height: screenHeight * 0.05),
                 CustomTextField(
                   height: 40,
                   width: screenWidth * 0.85,
@@ -124,7 +123,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: screenHeight * 0.04),
                 Center(
                   child: CustomButton(
                     c_height: 50,
@@ -144,7 +143,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: screenHeight * 0.02),
                 Center(
                   child: Text(
                     "Or Login With",
@@ -152,7 +151,7 @@ class _LoginState extends State<Login> {
                         fontSize: 13, color: Theme.of(context).hintColor),
                   ),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: screenHeight * 0.01),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -199,10 +198,10 @@ class _LoginState extends State<Login> {
                     children: [
                       Text(
                         "New User? ",
-                        style: GoogleFonts.roboto(
-                          fontSize: 12,
-                          color: Colors.white,
-                        ),
+                        style:
+                            Theme.of(context).textTheme.displayLarge?.copyWith(
+                                  fontSize: 12,
+                                ),
                       ),
                       GestureDetector(
                         onTap: () {

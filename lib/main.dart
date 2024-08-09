@@ -1,12 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:tourmate/screens/homescreen.dart';
-import 'package:tourmate/theme/dark_theme.dart';
+import 'package:tourmate/providers/bookmark_filter_provider.dart';
+import 'package:tourmate/screens/onboarding_screen.dart';
 import 'providers/search_filter_provider.dart';
+import 'providers/theme_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  BindingBase.debugZoneErrorsAreFatal = true;
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -15,6 +18,8 @@ void main() {
       MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => SearchProvider()),
+          ChangeNotifierProvider(create: (_) => BookmarkProvider()),
+          ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ],
         child: const MyApp(),
       ),
@@ -27,11 +32,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Tour Mate",
-      theme: DarkTheme,
-      home: const HomeScreen(),
+      theme: themeProvider.themeData,
+      home: ONBoarding(),
     );
   }
 }

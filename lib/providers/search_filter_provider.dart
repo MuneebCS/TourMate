@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../widgets/city_view.dart';
 import '../widgets/country_view.dart';
 import '../widgets/destination_view.dart';
@@ -50,84 +49,72 @@ class SearchProvider extends ChangeNotifier {
       imageUrl: 'assets/images/splash4.jpg',
       location: 'Minato, Tokyo, Japan',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
     OneDestination(
       title: 'Shinjuku Gyoen National Garden',
       imageUrl: 'assets/images/splash5.jpg',
       location: 'Shinjuku, Tokyo, Japan',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
     OneDestination(
       title: 'Fushimi Inari Shrine',
       imageUrl: 'assets/images/B1.jpg',
       location: 'Fushimi, Kyoto, Japan',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
     OneDestination(
       title: 'Kinkaku-ji (Golden Pavilion)',
       imageUrl: 'assets/images/splash4.jpg',
       location: 'Kita, Kyoto, Japan',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
     OneDestination(
       title: 'Colosseum',
       imageUrl: 'assets/images/splash5.jpg',
       location: 'Rome, Italy',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
     OneDestination(
       title: 'Vatican City',
       imageUrl: 'assets/images/B1.jpg',
       location: 'Vatican City, Rome, Italy',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
     OneDestination(
       title: 'Grand Canal',
       imageUrl: 'assets/images/splash4.jpg',
       location: 'Venice, Italy',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
     OneDestination(
       title: 'Piazza San Marco (St. Mark\'s Square)',
       imageUrl: 'assets/images/splash5.jpg',
       location: 'Venice, Italy',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
     OneDestination(
       title: 'Statue of Liberty',
       imageUrl: 'assets/images/B1.jpg',
       location: 'Liberty Island, New York, USA',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
     OneDestination(
       title: 'Central Park',
       imageUrl: 'assets/images/splash4.jpg',
       location: 'Manhattan, New York, USA',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
     OneDestination(
       title: 'Golden Gate Bridge',
       imageUrl: 'assets/images/splash5.jpg',
       location: 'San Francisco, USA',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
     OneDestination(
       title: 'Alcatraz Island',
       imageUrl: 'assets/images/B1.jpg',
       location: 'San Francisco Bay, USA',
       rating: '4.5',
-      isOneDestination: const Icon(Icons.bookmark),
     ),
   ];
 
@@ -152,38 +139,35 @@ class SearchProvider extends ChangeNotifier {
     ),
   ];
 
-  List<OneCity> _filteredCities = [];
-  List<OneCountry> _filteredCountries = [];
-  List<OneDestination> _filteredDestinations = [];
+  final TextEditingController searchController = TextEditingController();
 
-  SearchProvider() {
-    _filteredCities = cities;
-    _filteredCountries = countries;
-    _filteredDestinations = destinations;
-  }
+  List<dynamic> getFilteredItems(int selectedMenuIndex) {
+    final searchQuery = searchController.text.trim().toLowerCase();
 
-  List<OneCity> get filteredCities => _filteredCities;
-  List<OneCountry> get filteredCountries => _filteredCountries;
-  List<OneDestination> get filteredDestinations => _filteredDestinations;
+    List<dynamic> items;
 
-  void filterData(String query) {
-    if (query.isEmpty) {
-      _filteredCities = cities;
-      _filteredCountries = countries;
-      _filteredDestinations = destinations;
-    } else {
-      final lowerQuery = query.toLowerCase();
-      _filteredCities = cities
-          .where((city) => city.title.toLowerCase().contains(lowerQuery))
-          .toList();
-      _filteredCountries = countries
-          .where((country) => country.title.toLowerCase().contains(lowerQuery))
-          .toList();
-      _filteredDestinations = destinations
-          .where((destination) =>
-              destination.title.toLowerCase().contains(lowerQuery))
-          .toList();
+    switch (selectedMenuIndex) {
+      case 0:
+        items = destinations;
+        break;
+      case 1:
+        items = countries;
+        break;
+      case 2:
+        items = cities;
+        break;
+      default:
+        items = cities;
     }
-    notifyListeners();
+
+    if (searchQuery.isEmpty) {
+      return items;
+    } else {
+      return items.where((item) {
+        final itemTitle = item.title.toLowerCase();
+
+        return itemTitle.contains(searchQuery);
+      }).toList();
+    }
   }
 }

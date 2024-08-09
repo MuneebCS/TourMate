@@ -6,7 +6,7 @@ import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/custom_textfield.dart';
 
 class Register extends StatefulWidget {
-  const Register({super.key});
+  Register({super.key});
 
   @override
   State<Register> createState() => _RegisterState();
@@ -29,7 +29,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-
+    var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
@@ -77,33 +77,32 @@ class _RegisterState extends State<Register> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                const SizedBox(height: 190),
+                SizedBox(height: screenHeight * 0.32),
                 Padding(
                   padding: const EdgeInsets.only(right: 150),
                   child: Text(
                     "Register",
-                    style: GoogleFonts.roboto(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: screenHeight * 0.04),
                 CustomTextField(
                   height: 40,
                   width: screenWidth * 0.85,
                   leadingIcon: Icons.person,
                   hintText: 'Full Name',
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: screenHeight * 0.015),
                 CustomTextField(
                   height: 40,
                   width: screenWidth * 0.85,
                   leadingIcon: Icons.email,
                   hintText: 'Email ID',
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: screenHeight * 0.015),
                 CustomTextField(
                   height: 40,
                   width: screenWidth * 0.85,
@@ -118,7 +117,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 35),
+                SizedBox(height: screenHeight * 0.06),
                 Center(
                   child: CustomButton(
                     c_height: 50,
@@ -138,7 +137,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: screenHeight * 0.02),
                 Center(
                   child: Text(
                     "Or Register With",
@@ -146,7 +145,7 @@ class _RegisterState extends State<Register> {
                         fontSize: 13, color: Theme.of(context).hintColor),
                   ),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: screenHeight * 0.01),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -193,10 +192,10 @@ class _RegisterState extends State<Register> {
                     children: [
                       Text(
                         "Already have an account? ",
-                        style: GoogleFonts.roboto(
-                          fontSize: 12,
-                          color: Colors.white,
-                        ),
+                        style:
+                            Theme.of(context).textTheme.displayLarge?.copyWith(
+                                  fontSize: 12,
+                                ),
                       ),
                       GestureDetector(
                         onTap: () {

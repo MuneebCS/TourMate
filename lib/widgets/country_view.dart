@@ -46,19 +46,19 @@ class OneCountry extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(11),
+            padding: const EdgeInsets.all(11),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Spacer(),
-                    Icon(
+                    const Spacer(),
+                    const Icon(
                       Icons.location_on,
                       size: 12,
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Text(
                       location,
                       style: GoogleFonts.montserrat(
@@ -70,7 +70,7 @@ class OneCountry extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.4),
+                SizedBox(height: screenHeight * 0.35),
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -83,11 +83,11 @@ class OneCountry extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.umbrella_sharp,
                       size: 13,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 4,
                     ),
                     Text(
@@ -97,10 +97,10 @@ class OneCountry extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 Padding(
                   padding: EdgeInsets.only(left: screenWidth * 0.4),
                   child: Container(

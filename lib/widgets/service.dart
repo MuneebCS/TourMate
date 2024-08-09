@@ -5,7 +5,8 @@ class Service extends StatelessWidget {
   final String Head;
   final String desc;
 
-  Service({
+  const Service({
+    super.key,
     required this.count,
     required this.Head,
     required this.desc,
