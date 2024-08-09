@@ -81,7 +81,7 @@ class _ONBoardingState extends State<ONBoarding> {
                   c_width: screenWidth * 0.31,
                   col: Theme.of(context).secondaryHeaderColor,
                   onPress: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => Login(),

@@ -15,13 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-
-  final List<Widget> pages = [
-    const Home(),
-    const Search(),
-    const Bookmarks(),
-    Settings(),
-  ];
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _onItemTapped(int index) {
     setState(() {
@@ -29,12 +23,39 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void toggleDrawer() {
+    if (scaffoldKey.currentState!.isDrawerOpen) {
+      scaffoldKey.currentState?.openEndDrawer();
+    } else {
+      scaffoldKey.currentState?.openDrawer();
+    }
+  }
+
+  late List<Widget> pages;
+
+  @override
+  void initState() {
+    super.initState();
+    pages = [
+      Home(onDrawer: () => toggleDrawer),
+      const Search(),
+      const Bookmarks(),
+      Settings(),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     Color primaryColor = Theme.of(context).primaryColor;
 
     return Scaffold(
+      key: scaffoldKey,
       body: pages[_selectedIndex],
+      drawer: Drawer(
+        elevation: 16,
+        width: MediaQuery.of(context).size.width * 0.75,
+        child: Settings(),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: primaryColor,

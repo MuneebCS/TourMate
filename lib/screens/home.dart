@@ -12,10 +12,11 @@ import '../widgets/country_view.dart';
 import '../widgets/destination_view.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  final Function onDrawer;
+  const Home({super.key, required this.onDrawer});
 
   @override
-  _HomeState createState() => _HomeState();
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
@@ -65,11 +66,6 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
-        drawer: Drawer(
-          elevation: 16,
-          width: screenWidth * 0.75,
-          child: Settings(),
-        ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -126,7 +122,7 @@ class _HomeState extends State<Home> {
             return GestureDetector(
               child: const Icon(Icons.menu),
               onTap: () {
-                Scaffold.of(context).openDrawer();
+                widget.onDrawer();
               },
             );
           },

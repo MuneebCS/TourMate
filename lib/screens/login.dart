@@ -130,7 +130,7 @@ class _LoginState extends State<Login> {
                     c_width: screenWidth * 0.85,
                     col: Theme.of(context).secondaryHeaderColor,
                     onPress: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const HomeScreen(),

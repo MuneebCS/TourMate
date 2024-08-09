@@ -33,6 +33,7 @@ class _BookingDetailState extends State<BookingDetail> {
     var screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -342,10 +343,9 @@ class _BookingDetailState extends State<BookingDetail> {
       color: Theme.of(context).primaryColor,
       child: Text(
         "Kuta Beach, located on the southwestern coast of Bali, Indonesia, has a rich history that spans centuries, transforming from a small fishing village into one of the world's most renowned tourist destinations. In the early 19th century, Kuta was a quiet settlement where the local Balinese people engaged in fishing and farming. The arrival of international traders, particularly from the Dutch colonial period, began to change the region's dynamics. By the 1960s and 1970s, Kuta Beach started gaining popularity among backpackers and surfers from around the globe, drawn by its expansive sandy shores, consistent waves, and vibrant sunsets. This influx of visitors marked the beginning of its transformation into a bustling tourist hub. Over the decades, Kuta developed rapidly with the ruction of hotels, restaurants, and nightlife venues, becoming a symbol of Bali's booming tourism industry. Despite facing challenges such as natural disasters and the Bali bombings in the early 2000s, Kuta Beach has remained resilient, continuing to attract millions of visitors annually who seek its unique blend of natural beauty, cultural richness, and lively atmosphere.",
+        textAlign: TextAlign.justify,
         style: GoogleFonts.montserrat(
-          fontSize: 13,
-          color: Colors.grey,
-        ),
+            fontSize: 13, color: Colors.grey, fontWeight: FontWeight.w500),
       ),
     );
   }

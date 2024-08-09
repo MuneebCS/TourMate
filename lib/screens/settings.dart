@@ -75,7 +75,7 @@ class Settings extends StatelessWidget {
                     children: [
                       Setting(
                         onPress: () {
-                          themeProvider.toggleTheme();
+                          // themeProvider.toggleTheme();
                         },
                         customButton: CustomButton(
                             col: Colors.transparent,

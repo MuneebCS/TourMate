@@ -30,9 +30,12 @@ class FullImage extends StatelessWidget {
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.asset(
-              imageURL,
-              fit: BoxFit.cover,
+            child: Hero(
+              tag: imageURL,
+              child: Image.asset(
+                imageURL,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Align(

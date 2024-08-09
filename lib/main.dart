@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tourmate/providers/bookmark_filter_provider.dart';
 import 'package:tourmate/screens/onboarding_screen.dart';
+import 'package:tourmate/theme/dark_theme.dart';
+import 'package:tourmate/theme/light_theme.dart';
 import 'providers/search_filter_provider.dart';
 import 'providers/theme_provider.dart';
 
@@ -36,7 +38,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Tour Mate",
-      theme: themeProvider.themeData,
+      theme: lightTheme,
+      darkTheme: darkTheme,
       home: ONBoarding(),
     );
   }
