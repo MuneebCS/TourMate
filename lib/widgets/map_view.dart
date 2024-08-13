@@ -3,6 +3,8 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class MyMap extends StatefulWidget {
+  const MyMap({super.key});
+
   @override
   _MyMapState createState() => _MyMapState();
 }

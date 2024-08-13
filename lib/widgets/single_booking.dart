@@ -27,7 +27,7 @@ class SingleBooking extends StatelessWidget {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
 
-    return Container(
+    return SizedBox(
       width: screenWidth * 0.85,
       height: screenHeight * 0.35,
       child: Stack(
@@ -91,7 +91,7 @@ class SingleBooking extends StatelessWidget {
                         child: Center(
                           child: Text(
                             status!,
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.montserrat(
                               fontSize: 12,
                               color: col1,
                             ),
@@ -106,7 +106,7 @@ class SingleBooking extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: GoogleFonts.roboto(
+                      style: GoogleFonts.montserrat(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -117,7 +117,7 @@ class SingleBooking extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       duration,
-                      style: GoogleFonts.roboto(
+                      style: GoogleFonts.montserrat(
                         fontSize: 14,
                         color: Colors.white70,
                       ),

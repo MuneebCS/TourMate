@@ -30,7 +30,6 @@ class _SearchState extends State<Search> {
                   borderRadius: BorderRadius.circular(18),
                 ),
                 child: Stack(
-                  alignment: Alignment.center,
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(18),
@@ -43,45 +42,44 @@ class _SearchState extends State<Search> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsets.only(left: 10, right: 10, bottom: 3),
+                      padding: const EdgeInsets.only(
+                          left: 10, right: 10, bottom: 15),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: TextField(
-                                style: GoogleFonts.roboto(
-                                  color: Theme.of(context).secondaryHeaderColor,
+                            child: TextField(
+                              style: GoogleFonts.montserrat(
+                                color: Theme.of(context).secondaryHeaderColor,
+                              ),
+                              cursorColor:
+                                  Theme.of(context).secondaryHeaderColor,
+                              decoration: InputDecoration(
+                                enabledBorder: const UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent),
                                 ),
-                                cursorColor:
-                                    Theme.of(context).secondaryHeaderColor,
-                                decoration: InputDecoration(
-                                  enabledBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent),
-                                  ),
-                                  focusedBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent),
-                                  ),
-                                  hintText: 'Search your dream destination',
-                                  hintStyle: GoogleFonts.roboto(
-                                    color:
-                                        Theme.of(context).secondaryHeaderColor,
-                                    fontSize: 15,
-                                  ),
+                                focusedBorder: const UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent),
+                                ),
+                                hintText: 'Search your dream destination',
+                                hintStyle: GoogleFonts.montserrat(
+                                  color: Theme.of(context).secondaryHeaderColor,
+                                  fontSize: 15,
                                 ),
                               ),
                             ),
                           ),
-                          GestureDetector(
-                            child: SvgPicture.asset(
-                              'assets/icons/search.svg',
-                              color: Theme.of(context).secondaryHeaderColor,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: GestureDetector(
+                              child: SvgPicture.asset(
+                                'assets/icons/search.svg',
+                                color: Theme.of(context).secondaryHeaderColor,
+                              ),
+                              onTap: () {},
                             ),
-                            onTap: () {},
                           ),
                         ],
                       ),

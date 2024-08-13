@@ -8,7 +8,7 @@ import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/custom_textfield.dart';
 
 class Login extends StatefulWidget {
-  Login({super.key});
+  const Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();
@@ -69,9 +69,9 @@ class _LoginState extends State<Login> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                SizedBox(height: screenHeight * 0.35),
+                SizedBox(height: screenHeight * 0.32),
                 Padding(
-                  padding: const EdgeInsets.only(right: 200),
+                  padding: EdgeInsets.only(right: screenWidth * 0.55),
                   child: Text(
                     "Login",
                     style: Theme.of(context).textTheme.displayLarge?.copyWith(
@@ -80,7 +80,7 @@ class _LoginState extends State<Login> {
                         ),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.05),
+                SizedBox(height: screenHeight * 0.08),
                 CustomTextField(
                   height: 40,
                   width: screenWidth * 0.85,
@@ -117,7 +117,7 @@ class _LoginState extends State<Login> {
                     },
                     child: Text(
                       "Forgot?",
-                      style: GoogleFonts.roboto(
+                      style: GoogleFonts.montserrat(
                         color: Theme.of(context).secondaryHeaderColor,
                       ),
                     ),
@@ -130,7 +130,7 @@ class _LoginState extends State<Login> {
                     c_width: screenWidth * 0.85,
                     col: Theme.of(context).secondaryHeaderColor,
                     onPress: () {
-                      Navigator.pushReplacement(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const HomeScreen(),
@@ -138,8 +138,10 @@ class _LoginState extends State<Login> {
                     },
                     child: Text(
                       "Login",
-                      style: GoogleFonts.roboto(
-                          fontSize: 16, color: Theme.of(context).primaryColor),
+                      style: GoogleFonts.montserrat(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          color: Theme.of(context).primaryColor),
                     ),
                   ),
                 ),
@@ -147,7 +149,7 @@ class _LoginState extends State<Login> {
                 Center(
                   child: Text(
                     "Or Login With",
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.montserrat(
                         fontSize: 13, color: Theme.of(context).hintColor),
                   ),
                 ),
@@ -213,7 +215,7 @@ class _LoginState extends State<Login> {
                         },
                         child: Text(
                           "Register Here",
-                          style: GoogleFonts.roboto(
+                          style: GoogleFonts.montserrat(
                             fontSize: 12,
                             color: Theme.of(context).secondaryHeaderColor,
                           ),

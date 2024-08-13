@@ -30,7 +30,7 @@ class OneDestination extends StatelessWidget {
       builder: (context, bookmarkProvider, child) {
         bool isBookmarked = bookmarkProvider.isBookmark(this);
 
-        return Container(
+        return SizedBox(
           width: screenWidth * 0.81,
           height: screenHeight * 0.95,
           child: Stack(
@@ -60,7 +60,7 @@ class OneDestination extends StatelessWidget {
                       children: [
                         CustomContainer(
                           height: 35,
-                          width: 55,
+                          width: 60,
                           borderRadius: 18,
                           child: Padding(
                             padding: const EdgeInsets.all(2),
@@ -101,18 +101,18 @@ class OneDestination extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 100),
+                    SizedBox(height: screenHeight * 0.1),
                     Text(
                       title,
                       style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
-                        fontSize: 32,
+                        fontSize: 30,
                         color: Colors.white,
                       ),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: screenHeight * 0.01),
                     Text(
                       location,
                       style: GoogleFonts.montserrat(

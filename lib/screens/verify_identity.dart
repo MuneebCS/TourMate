@@ -6,7 +6,7 @@ import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/custom_textfield.dart';
 
 class VerifyIdentity extends StatefulWidget {
-  const VerifyIdentity({super.key});
+  VerifyIdentity({super.key});
 
   @override
   State<VerifyIdentity> createState() => _VerifyIdentityState();
@@ -58,46 +58,30 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
             ),
           ),
           Positioned(
-            top: screenHeight * 0.2,
-            left: screenWidth * 0.05,
-            right: screenWidth * 0.05,
+            top: screenHeight * 0.25,
+            left: screenWidth * 0.01,
+            right: screenWidth * 0.01,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Verify ",
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayLarge
-                              ?.copyWith(
-                                fontSize: 45,
-                              ),
-                        ),
-                        TextSpan(
-                          text: "Your Identity",
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayLarge
-                              ?.copyWith(
-                                fontSize: 45,
-                              ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 20),
                   Text(
-                    "We have just sent a verification code to your selected contact details.",
-                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                          fontSize: 16,
+                    "Verifiy your Identity",
+                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                          fontSize: 40,
                         ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 4,
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: screenHeight * 0.05),
+                  Text(
+                      "We have just sent a verification code to your selected contact details.",
+                      style: GoogleFonts.montserrat(
+                          color: Theme.of(context).hintColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400)),
+                  SizedBox(height: screenHeight * 0.1),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -125,10 +109,11 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                     children: [
                       Text(
                         "Didn't receive the code? ",
-                        style:
-                            Theme.of(context).textTheme.displayLarge?.copyWith(
-                                  fontSize: 12,
-                                ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayLarge
+                            ?.copyWith(
+                                fontSize: 12, fontWeight: FontWeight.w200),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -136,10 +121,10 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                         },
                         child: Text(
                           "Resend Code",
-                          style: GoogleFonts.roboto(
-                            color: Theme.of(context).secondaryHeaderColor,
-                            fontSize: 12,
-                          ),
+                          style: GoogleFonts.montserrat(
+                              color: Theme.of(context).secondaryHeaderColor,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w200),
                         ),
                       ),
                     ],
@@ -160,21 +145,23 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                       },
                       child: Text(
                         "Verification",
-                        style: GoogleFonts.roboto(
-                            color: Theme.of(context).primaryColor),
+                        style: GoogleFonts.montserrat(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.w800),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: screenHeight * 0.01),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "By registering you agree to our ",
-                        style:
-                            Theme.of(context).textTheme.displayLarge?.copyWith(
-                                  fontSize: 10,
-                                ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayLarge
+                            ?.copyWith(
+                                fontSize: 11, fontWeight: FontWeight.w300),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -186,8 +173,9 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                         },
                         child: Text(
                           "Terms of service",
-                          style: GoogleFonts.roboto(
-                            fontSize: 10,
+                          style: GoogleFonts.montserrat(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w300,
                             color: Theme.of(context).secondaryHeaderColor,
                           ),
                         ),

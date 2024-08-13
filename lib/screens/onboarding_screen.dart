@@ -8,7 +8,7 @@ import 'splash3.dart';
 import 'splash4.dart';
 
 class ONBoarding extends StatefulWidget {
-  ONBoarding({super.key});
+  const ONBoarding({super.key});
 
   @override
   _ONBoardingState createState() => _ONBoardingState();
@@ -57,15 +57,15 @@ class _ONBoardingState extends State<ONBoarding> {
           ),
           if (_currentPage < 2)
             Positioned(
-                bottom: screenHeight * 0.02,
-                right: screenWidth * 0.05,
+                bottom: screenHeight * 0.04,
+                right: screenWidth * 0.07,
                 child: CustomButton(
                   c_height: screenHeight * 0.08,
-                  c_width: screenWidth * 0.21,
+                  c_width: screenWidth * 0.2,
                   col: Theme.of(context).secondaryHeaderColor,
                   onPress: () {
                     _controller.nextPage(
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                     );
                   },
@@ -74,24 +74,26 @@ class _ONBoardingState extends State<ONBoarding> {
                 ))
           else if (_currentPage == 2)
             Positioned(
-                bottom: screenHeight * 0.02,
-                right: screenWidth * 0.05,
+                bottom: screenHeight * 0.04,
+                right: screenWidth * 0.07,
                 child: CustomButton(
-                  c_height: screenHeight * 0.08,
-                  c_width: screenWidth * 0.31,
+                  c_height: screenHeight * 0.1,
+                  c_width: screenWidth * 0.3,
                   col: Theme.of(context).secondaryHeaderColor,
                   onPress: () {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Login(),
+                        builder: (context) => const Login(),
                       ),
                     );
                   },
                   child: Text(
                     "Sign in",
-                    style: GoogleFonts.roboto(
-                        fontSize: 15, color: Theme.of(context).primaryColor),
+                    style: GoogleFonts.montserrat(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                        color: Theme.of(context).primaryColor),
                   ),
                 )),
         ],

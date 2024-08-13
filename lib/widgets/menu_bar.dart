@@ -65,7 +65,7 @@ Widget menuButton({
               Text(
                 text,
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight:
                           isSelected ? FontWeight.bold : FontWeight.w600,
                       color: isSelected
@@ -75,7 +75,7 @@ Widget menuButton({
               ),
               Container(
                 height: 2,
-                width: 16,
+                width: 20,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   color: isSelected

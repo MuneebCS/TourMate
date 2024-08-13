@@ -50,17 +50,19 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             Text(
               "Forgot Password",
               style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                    fontSize: 45,
+                    fontSize: 38,
                   ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 3,
             ),
             const SizedBox(height: 20),
             Text(
-              "Please select your contact detail and we will send a verification code to reset your password.",
-              style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                    fontSize: 16,
-                  ),
-            ),
-            const SizedBox(height: 30),
+                "Please select your contact detail and we will send a verification code to reset your password.",
+                style: GoogleFonts.montserrat(
+                    color: Theme.of(context).hintColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400)),
+            SizedBox(height: screenHeight * 0.05),
             Column(
               children: List.generate(options.length, (index) {
                 return GestureDetector(
@@ -118,7 +120,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 );
               }),
             ),
-            SizedBox(height: screenHeight * 0.1),
+            SizedBox(height: screenHeight * 0.055),
             CustomButton(
               c_height: 50,
               c_width: screenWidth * 0.85,
@@ -132,8 +134,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               },
               child: Text(
                 "Verify",
-                style:
-                    GoogleFonts.roboto(color: Theme.of(context).primaryColor),
+                style: GoogleFonts.montserrat(
+                    color: Theme.of(context).primaryColor),
               ),
             ),
           ],

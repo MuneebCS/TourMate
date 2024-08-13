@@ -6,7 +6,7 @@ import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/single_booking.dart';
 
 class BookingList extends StatefulWidget {
-  const BookingList({super.key});
+  BookingList({super.key});
 
   @override
   State<BookingList> createState() => _BookingListState();
@@ -181,7 +181,7 @@ class _BookingListState extends State<BookingList> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
-          child: Container(
+          child: SizedBox(
             height: 27,
             child: TextField(
               decoration: InputDecoration(

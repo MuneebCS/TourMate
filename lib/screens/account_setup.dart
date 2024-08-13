@@ -31,38 +31,28 @@ class _AccountSetupState extends State<AccountSetup> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.all(12),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "Account ",
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                          fontSize: 45,
-                        ),
+            Text(
+              "Account Setup",
+              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    fontSize: 40,
                   ),
-                  TextSpan(
-                    text: "Setup",
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                          fontSize: 45,
-                        ),
-                  ),
-                ],
-              ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 4,
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.05),
             Text(
               "Finish your account setup by uploading profile picture and set your username.",
-              style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                    fontSize: 14,
-                  ),
+              style: GoogleFonts.montserrat(
+                color: Theme.of(context).hintColor,
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+              ),
             ),
-            const SizedBox(
-              height: 50,
-            ),
+            SizedBox(height: screenHeight * 0.05),
             Center(
               child: Stack(
                 children: [
@@ -75,7 +65,7 @@ class _AccountSetupState extends State<AccountSetup> {
                         )),
                     child: CircleAvatar(
                       backgroundColor: Colors.transparent,
-                      radius: 80,
+                      radius: 100,
                       child: Icon(
                         Icons.person,
                         size: 100,
@@ -100,14 +90,14 @@ class _AccountSetupState extends State<AccountSetup> {
                 ],
               ),
             ),
-            SizedBox(height: screenHeight * 0.05),
+            SizedBox(height: screenHeight * 0.01),
             CustomTextField(
               height: 40,
               width: screenWidth * 0.85,
               leadingIcon: Icons.person,
               hintText: 'user123',
             ),
-            SizedBox(height: screenHeight * 0.09),
+            SizedBox(height: screenHeight * 0.05),
             CustomButton(
               c_height: 50,
               c_width: screenWidth * 0.85,
@@ -121,8 +111,10 @@ class _AccountSetupState extends State<AccountSetup> {
               },
               child: Text(
                 "Create Account",
-                style: GoogleFonts.roboto(
-                    fontSize: 14, color: Theme.of(context).primaryColor),
+                style: GoogleFonts.montserrat(
+                    fontSize: 14,
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.w400),
               ),
             ),
           ],

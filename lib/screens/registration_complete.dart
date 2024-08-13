@@ -4,6 +4,8 @@ import 'package:tourmate/screens/homescreen.dart';
 import '../widgets/custom_button.dart';
 
 class RegistrationComplete extends StatefulWidget {
+  const RegistrationComplete({super.key});
+
   @override
   State<RegistrationComplete> createState() => _RegistrationCompleteState();
 }
@@ -28,39 +30,28 @@ class _RegistrationCompleteState extends State<RegistrationComplete> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "Register   ",
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                          fontSize: 50,
-                        ),
+            Text(
+              "Register Complete",
+              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    fontSize: 40,
                   ),
-                  TextSpan(
-                    text: "Complete!",
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                          fontSize: 50,
-                        ),
-                  ),
-                ],
+              overflow: TextOverflow.ellipsis,
+              maxLines: 4,
+            ),
+            SizedBox(height: screenHeight * 0.05),
+            Text(
+              "You have successfully created your account.",
+              style: GoogleFonts.montserrat(
+                color: Theme.of(context).hintColor,
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
               ),
             ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: Text(
-                "You have successfully created your account.",
-                style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                      fontSize: 16,
-                    ),
-              ),
-            ),
-            const SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.05),
             Center(
               child: Column(
                 children: [
@@ -68,8 +59,8 @@ class _RegistrationCompleteState extends State<RegistrationComplete> {
                     alignment: Alignment.center,
                     children: [
                       Container(
-                        height: 260,
-                        width: 330,
+                        height: screenHeight * 0.35,
+                        width: screenWidth * 0.57,
                         decoration: BoxDecoration(
                           gradient: RadialGradient(colors: [
                             Theme.of(context).secondaryHeaderColor,
@@ -86,7 +77,7 @@ class _RegistrationCompleteState extends State<RegistrationComplete> {
                       ),
                       CircleAvatar(
                         backgroundColor: Theme.of(context).cardColor,
-                        radius: 65,
+                        radius: 80,
                         child: Icon(
                           Icons.person,
                           size: 60,
@@ -105,13 +96,13 @@ class _RegistrationCompleteState extends State<RegistrationComplete> {
                 ],
               ),
             ),
-            SizedBox(height: screenHeight * 0.07),
+            SizedBox(height: screenHeight * 0.1),
             CustomButton(
               c_height: 50,
               c_width: screenWidth * 0.85,
               col: Theme.of(context).secondaryHeaderColor,
               onPress: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const HomeScreen(),
@@ -119,8 +110,10 @@ class _RegistrationCompleteState extends State<RegistrationComplete> {
               },
               child: Text(
                 "Explore Home",
-                style: GoogleFonts.roboto(
-                    fontSize: 14, color: Theme.of(context).primaryColor),
+                style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    color: Theme.of(context).primaryColor),
               ),
             ),
           ],

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/custom_button.dart';
@@ -25,7 +23,7 @@ class OneCountry extends StatelessWidget {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
 
-    return Container(
+    return SizedBox(
       width: screenWidth * 0.81,
       height: screenHeight * 0.95,
       child: Stack(
@@ -56,7 +54,8 @@ class OneCountry extends StatelessWidget {
                     const Spacer(),
                     const Icon(
                       Icons.location_on,
-                      size: 12,
+                      size: 15,
+                      color: Colors.white,
                     ),
                     const SizedBox(width: 4),
                     Text(
@@ -70,7 +69,7 @@ class OneCountry extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.35),
+                SizedBox(height: screenHeight * 0.1),
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -85,7 +84,8 @@ class OneCountry extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.umbrella_sharp,
-                      size: 13,
+                      size: 15,
+                      color: Colors.white,
                     ),
                     const SizedBox(
                       width: 4,

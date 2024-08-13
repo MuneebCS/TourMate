@@ -77,9 +77,9 @@ class _RegisterState extends State<Register> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                SizedBox(height: screenHeight * 0.32),
+                SizedBox(height: screenHeight * 0.31),
                 Padding(
-                  padding: const EdgeInsets.only(right: 150),
+                  padding: EdgeInsets.only(right: screenWidth * 0.35),
                   child: Text(
                     "Register",
                     style: Theme.of(context).textTheme.displayLarge?.copyWith(
@@ -88,7 +88,7 @@ class _RegisterState extends State<Register> {
                         ),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.04),
+                SizedBox(height: screenHeight * 0.06),
                 CustomTextField(
                   height: 40,
                   width: screenWidth * 0.85,
@@ -127,13 +127,15 @@ class _RegisterState extends State<Register> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const VerifyIdentity(),
+                            builder: (context) => VerifyIdentity(),
                           ));
                     },
                     child: Text(
                       "Register",
-                      style: GoogleFonts.roboto(
-                          fontSize: 16, color: Theme.of(context).primaryColor),
+                      style: GoogleFonts.montserrat(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          color: Theme.of(context).primaryColor),
                     ),
                   ),
                 ),
@@ -141,7 +143,7 @@ class _RegisterState extends State<Register> {
                 Center(
                   child: Text(
                     "Or Register With",
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.montserrat(
                         fontSize: 13, color: Theme.of(context).hintColor),
                   ),
                 ),
@@ -203,7 +205,7 @@ class _RegisterState extends State<Register> {
                         },
                         child: Text(
                           "Login Here",
-                          style: GoogleFonts.roboto(
+                          style: GoogleFonts.montserrat(
                             fontSize: 12,
                             color: Theme.of(context).secondaryHeaderColor,
                           ),

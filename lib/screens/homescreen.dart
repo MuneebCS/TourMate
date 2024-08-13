@@ -37,7 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     pages = [
-      Home(onDrawer: () => toggleDrawer),
+      Home(onDrawer: () {
+        toggleDrawer();
+      }),
       const Search(),
       const Bookmarks(),
       Settings(),
@@ -53,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: pages[_selectedIndex],
       drawer: Drawer(
         elevation: 16,
-        width: MediaQuery.of(context).size.width * 0.75,
+        width: MediaQuery.of(context).size.width * 0.8,
         child: Settings(),
       ),
       bottomNavigationBar: BottomNavigationBar(

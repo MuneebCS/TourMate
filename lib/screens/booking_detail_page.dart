@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:tourmate/providers/reviews_provider.dart';
 import 'package:tourmate/screens/reviews.dart';
 import 'package:tourmate/screens/gallery_grid.dart';
+import 'package:tourmate/widgets/review_widget.dart';
 
 import '../widgets/custom_button.dart';
 import '../widgets/custom_container.dart';
@@ -26,7 +29,7 @@ class BookingDetail extends StatefulWidget {
 }
 
 class _BookingDetailState extends State<BookingDetail> {
-  bool _isHistorySelected = true; // Initial state is History
+  bool _isHistorySelected = true;
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +103,9 @@ class _BookingDetailState extends State<BookingDetail> {
                     const SizedBox(height: 20),
                     _buildTabBar(context),
                     const SizedBox(height: 10),
-                    _buildHistorySection(context),
+                    _isHistorySelected
+                        ? _buildHistorySection(context)
+                        : _buildReviewSection(context),
                   ],
                 ),
               ),
@@ -294,15 +299,9 @@ class _BookingDetailState extends State<BookingDetail> {
           "Reviews",
           !_isHistorySelected,
           () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Reviews(
-                  title: widget.title,
-                  location: widget.location,
-                ),
-              ),
-            );
+            setState(() {
+              _isHistorySelected = false;
+            });
           },
         ),
       ],
@@ -350,6 +349,56 @@ class _BookingDetailState extends State<BookingDetail> {
     );
   }
 
+  Widget _buildReviewSection(BuildContext context) {
+    return Consumer<ReviewsProvider>(builder: (context, provider, child) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          for (var review in provider.allReviews.take(3).toList())
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: ReviewWidget(review: review),
+            ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Center(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Reviews(
+                        title: widget.title,
+                        location: widget.location,
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 30),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(30),
+                    border:
+                        Border.all(color: const Color(0xFFE1A25A), width: 1.5),
+                  ),
+                  child: Text(
+                    "View All Reviews",
+                    style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    });
+  }
+
   Widget _buildPriceAndButton(BuildContext context, double screenWidth) {
     return Container(
       color: Theme.of(context).primaryColor,
@@ -389,7 +438,7 @@ class _BookingDetailState extends State<BookingDetail> {
               onPress: () {},
               child: Text(
                 "Book Now",
-                style: GoogleFonts.roboto(
+                style: GoogleFonts.montserrat(
                   fontSize: 16,
                   color: Theme.of(context).primaryColor,
                 ),

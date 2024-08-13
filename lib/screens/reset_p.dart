@@ -5,7 +5,7 @@ import '../widgets/custom_button.dart';
 import '../widgets/custom_textfield.dart';
 
 class ResetPassword extends StatefulWidget {
-  const ResetPassword({super.key});
+  ResetPassword({super.key});
 
   @override
   State<ResetPassword> createState() => _ResetPasswordState();
@@ -48,32 +48,22 @@ class _ResetPasswordState extends State<ResetPassword> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "Reset ",
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                          fontSize: 50,
-                        ),
+            Text(
+              "Reset Password",
+              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    fontSize: 40,
                   ),
-                  TextSpan(
-                    text: "Password",
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                          fontSize: 50,
-                        ),
-                  ),
-                ],
-              ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 3,
             ),
             const SizedBox(height: 20),
             Text(
-              "At least 8 characters with uppercase, lowercase, and special characters",
-              style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                    fontSize: 16,
-                  ),
-            ),
-            const SizedBox(height: 30),
+                "At least 8 characters with uppercase, lowercase, and special characters",
+                style: GoogleFonts.montserrat(
+                    color: Theme.of(context).hintColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400)),
+            SizedBox(height: screenHeight * 0.1),
             CustomTextField(
               height: 40,
               width: screenWidth * 0.85,
@@ -88,7 +78,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                 ),
               ),
             ),
-            const SizedBox(height: 40),
+            SizedBox(height: screenHeight * 0.1),
             CustomTextField(
               height: 40,
               width: screenWidth * 0.85,
@@ -103,7 +93,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                 ),
               ),
             ),
-            SizedBox(height: screenHeight * 0.27),
+            SizedBox(height: screenHeight * 0.2),
             CustomButton(
               c_height: 50,
               c_width: screenWidth * 0.85,
@@ -112,13 +102,13 @@ class _ResetPasswordState extends State<ResetPassword> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Login(),
+                      builder: (context) => const Login(),
                     ));
               },
               child: Text(
                 "Update Password",
-                style:
-                    GoogleFonts.roboto(color: Theme.of(context).primaryColor),
+                style: GoogleFonts.montserrat(
+                    color: Theme.of(context).primaryColor),
               ),
             ),
           ],

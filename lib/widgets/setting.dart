@@ -6,7 +6,7 @@ class Setting extends StatefulWidget {
   final CustomButton customButton;
   final VoidCallback? onPress;
 
-  Setting({
+  const Setting({
     required this.settingName,
     required this.customButton,
     this.onPress,

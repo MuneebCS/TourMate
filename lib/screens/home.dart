@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:tourmate/screens/settings.dart';
 import 'package:tourmate/widgets/custom_button.dart';
 import 'package:tourmate/widgets/menu_bar.dart';
 import '../providers/search_filter_provider.dart';
 import '../widgets/city_view.dart';
 import '../widgets/country_view.dart';
 import '../widgets/destination_view.dart';
+import 'booking_detail_page.dart';
 
 class Home extends StatefulWidget {
   final Function onDrawer;
@@ -40,17 +40,6 @@ class _HomeState extends State<Home> {
 
   void _onSearchChanged() {
     setState(() {}); // Trigger a rebuild to update the UI
-  }
-
-  void _scrollToNextPage() {
-    if (_pageController.hasClients) {
-      final int nextPage = _pageController.page!.toInt() + 1;
-      _pageController.animateToPage(
-        nextPage,
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.easeInOut,
-      );
-    }
   }
 
   void _onMenuItemSelected(int index) {
@@ -133,11 +122,11 @@ class _HomeState extends State<Home> {
 
   Widget _buildProfileButton(BuildContext context) {
     return Container(
-      width: 45,
-      height: 40,
+      width: 55,
+      height: 55,
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(18),
         image: const DecorationImage(
           image: AssetImage('assets/images/splash2.jpg'),
           fit: BoxFit.cover,
@@ -152,12 +141,13 @@ class _HomeState extends State<Home> {
       children: [
         Text(
           "Welcome",
-          style: GoogleFonts.roboto(fontSize: 10),
+          style: GoogleFonts.montserrat(fontSize: 10),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 2),
         Text(
           "Evelyn",
-          style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.bold),
+          style:
+              GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ],
     );
@@ -260,9 +250,8 @@ class _HomeState extends State<Home> {
               imageUrl: destination.imageUrl,
               location: destination.location,
               rating: destination.rating,
-              customButton: index < filteredItems.length - 1
-                  ? _buildNextButton(screenWidth, context)
-                  : null,
+              customButton:
+                  _buildNextDestButton(screenWidth, context, destination),
             ),
           );
         } else if (selectedMenuIndex == 1) {
@@ -309,7 +298,63 @@ class _HomeState extends State<Home> {
       c_height: 50,
       c_width: screenWidth * 0.3,
       col: Colors.transparent,
-      onPress: _scrollToNextPage,
+      onPress: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const BookingDetail(
+                location: "Paris France",
+                title: "Goreme National Park",
+                imageUrl: 'assets/images/splash1.jpg',
+                rating: '4.2',
+              ),
+            ));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(18),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                child: Container(
+                  color:
+                      Theme.of(context).secondaryHeaderColor.withOpacity(0.2),
+                ),
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward,
+              color: Theme.of(context).secondaryHeaderColor,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  CustomButton _buildNextDestButton(
+      double screenWidth, BuildContext context, OneDestination destination) {
+    return CustomButton(
+      c_height: 50,
+      c_width: screenWidth * 0.3,
+      col: Colors.transparent,
+      onPress: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BookingDetail(
+                location: destination.location,
+                title: destination.title,
+                imageUrl: destination.imageUrl,
+                rating: destination.rating,
+              ),
+            ));
+      },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),

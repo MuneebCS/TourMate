@@ -28,7 +28,7 @@ class CustomTextField extends StatelessWidget {
         cursorColor: Theme.of(context).hintColor,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: GoogleFonts.roboto(fontSize: 12),
+          hintStyle: GoogleFonts.montserrat(fontSize: 12),
           contentPadding: const EdgeInsets.symmetric(vertical: 5),
           isDense: true,
           enabledBorder: UnderlineInputBorder(
