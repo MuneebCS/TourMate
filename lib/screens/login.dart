@@ -69,7 +69,7 @@ class _LoginState extends State<Login> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                SizedBox(height: screenHeight * 0.32),
+                const Spacer(),
                 Padding(
                   padding: EdgeInsets.only(right: screenWidth * 0.55),
                   child: Text(
@@ -139,7 +139,7 @@ class _LoginState extends State<Login> {
                     child: Text(
                       "Login",
                       style: GoogleFonts.montserrat(
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w600,
                           fontSize: 16,
                           color: Theme.of(context).primaryColor),
                     ),

@@ -57,133 +57,127 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                   ]),
             ),
           ),
-          Positioned(
-            top: screenHeight * 0.25,
-            left: screenWidth * 0.01,
-            right: screenWidth * 0.01,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Verifiy your Identity",
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                          fontSize: 40,
-                        ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 4,
-                  ),
-                  SizedBox(height: screenHeight * 0.05),
-                  Text(
-                      "We have just sent a verification code to your selected contact details.",
-                      style: GoogleFonts.montserrat(
-                          color: Theme.of(context).hintColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400)),
-                  SizedBox(height: screenHeight * 0.1),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CustomTextField(
-                        height: 40,
-                        width: screenWidth * 0.19,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Spacer(),
+                Text(
+                  "Verifiy your Identity",
+                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                        fontSize: 40,
                       ),
-                      CustomTextField(
-                        height: 40,
-                        width: screenWidth * 0.19,
-                      ),
-                      CustomTextField(
-                        height: 40,
-                        width: screenWidth * 0.19,
-                      ),
-                      CustomTextField(
-                        height: 40,
-                        width: screenWidth * 0.19,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Didn't receive the code? ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayLarge
-                            ?.copyWith(
-                                fontSize: 12, fontWeight: FontWeight.w200),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // Handle resend code action
-                        },
-                        child: Text(
-                          "Resend Code",
-                          style: GoogleFonts.montserrat(
-                              color: Theme.of(context).secondaryHeaderColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w200),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: screenHeight * 0.1),
-                  Center(
-                    child: CustomButton(
-                      c_height: 50,
-                      c_width: screenWidth * 0.80,
-                      col: Theme.of(context).secondaryHeaderColor,
-                      onPress: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AccountSetup(),
-                          ),
-                        );
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 4,
+                ),
+                SizedBox(height: screenHeight * 0.05),
+                Text(
+                    "We have just sent a verification code to your selected contact details.",
+                    style: GoogleFonts.montserrat(
+                        color: Theme.of(context).hintColor,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400)),
+                SizedBox(height: screenHeight * 0.1),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomTextField(
+                      height: 40,
+                      width: screenWidth * 0.19,
+                    ),
+                    CustomTextField(
+                      height: 40,
+                      width: screenWidth * 0.19,
+                    ),
+                    CustomTextField(
+                      height: 40,
+                      width: screenWidth * 0.19,
+                    ),
+                    CustomTextField(
+                      height: 40,
+                      width: screenWidth * 0.19,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Didn't receive the code? ",
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayLarge
+                          ?.copyWith(fontSize: 12, fontWeight: FontWeight.w200),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        // Handle resend code action
                       },
                       child: Text(
-                        "Verification",
+                        "Resend Code",
                         style: GoogleFonts.montserrat(
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.w800),
+                            color: Theme.of(context).secondaryHeaderColor,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w200),
                       ),
                     ),
+                  ],
+                ),
+                SizedBox(height: screenHeight * 0.1),
+                Center(
+                  child: CustomButton(
+                    c_height: 50,
+                    c_width: screenWidth * 0.80,
+                    col: Theme.of(context).secondaryHeaderColor,
+                    onPress: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AccountSetup(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Verification",
+                      style: GoogleFonts.montserrat(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.w600),
+                    ),
                   ),
-                  SizedBox(height: screenHeight * 0.01),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "By registering you agree to our ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayLarge
-                            ?.copyWith(
-                                fontSize: 11, fontWeight: FontWeight.w300),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => TermsOfServices(),
-                              ));
-                        },
-                        child: Text(
-                          "Terms of service",
-                          style: GoogleFonts.montserrat(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).secondaryHeaderColor,
-                          ),
+                ),
+                SizedBox(height: screenHeight * 0.01),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "By registering you agree to our ",
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayLarge
+                          ?.copyWith(fontSize: 10, fontWeight: FontWeight.w300),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TermsOfServices(),
+                            ));
+                      },
+                      child: Text(
+                        "Terms of service",
+                        style: GoogleFonts.montserrat(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w300,
+                          color: Theme.of(context).secondaryHeaderColor,
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ],

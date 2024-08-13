@@ -111,7 +111,7 @@ class _RegistrationCompleteState extends State<RegistrationComplete> {
               child: Text(
                 "Explore Home",
                 style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w600,
                     fontSize: 14,
                     color: Theme.of(context).primaryColor),
               ),

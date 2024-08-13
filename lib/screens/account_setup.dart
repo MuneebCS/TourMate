@@ -35,6 +35,7 @@ class _AccountSetupState extends State<AccountSetup> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const Spacer(),
             Text(
               "Account Setup",
               style: Theme.of(context).textTheme.displayLarge?.copyWith(
@@ -114,7 +115,7 @@ class _AccountSetupState extends State<AccountSetup> {
                 style: GoogleFonts.montserrat(
                     fontSize: 14,
                     color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w400),
+                    fontWeight: FontWeight.w600),
               ),
             ),
           ],

@@ -65,7 +65,7 @@ Widget menuButton({
               Text(
                 text,
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight:
                           isSelected ? FontWeight.bold : FontWeight.w600,
                       color: isSelected
