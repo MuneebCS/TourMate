@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
   flutter_map: ^7.0.2
   flutter_map_tile_caching: ^9.1.1
+  flutter_native_splash: ^2.4.1
   flutter_staggered_grid_view: ^0.7.0
   flutter_svg: ^2.0.10+1
   google_fonts: ^6.2.1
@@ -32,3 +33,17 @@ flutter:
     - assets/images/
     - assets/icons/
   
+# flutter_native_splash-production.yaml
+flutter_native_splash:
+  color: "#FFE8C8"
+  image: assets/icons/light_mode_logo.png
+  color_dark: "#133136"
+  image_dark: assets/icons/dark_mode_logo.png
+
+  android_12:
+    image: assets/icons/light_mode_logo.png
+    icon_background_color: "#FFE8C8"
+    image_dark:  assets/icons/dark_mode_logo.png
+    icon_background_color_dark: "#133136"
+
+  web: false

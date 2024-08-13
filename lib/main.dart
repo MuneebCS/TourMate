@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tourmate/providers/bookmark_filter_provider.dart';
 import 'package:tourmate/providers/reviews_provider.dart';
+import 'package:tourmate/screens/onboarding_screen.dart';
 import 'package:tourmate/theme/dark_theme.dart';
 import 'providers/search_filter_provider.dart';
 import 'screens/splash1.dart';
@@ -40,6 +41,6 @@ class MyApp extends StatelessWidget {
         theme: darkTheme,
         // theme: lightTheme,
         darkTheme: darkTheme,
-        home: SplashOne());
+        home: ONBoarding());
   }
 }
