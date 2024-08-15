@@ -400,51 +400,54 @@ class _BookingDetailState extends State<BookingDetail> {
   }
 
   Widget _buildPriceAndButton(BuildContext context, double screenWidth) {
-    return Container(
-      color: Theme.of(context).primaryColor,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  '\$180',
-                  style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                    color: Theme.of(context).secondaryHeaderColor,
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Container(
+        color: Theme.of(context).primaryColor,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    '\$180',
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                      color: Theme.of(context).secondaryHeaderColor,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
                   ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
-                ),
-                Text(
-                  "/Day",
-                  style: GoogleFonts.montserrat(
-                    fontSize: 14,
-                    color: Theme.of(context).secondaryHeaderColor,
+                  Text(
+                    "/Day",
+                    style: GoogleFonts.montserrat(
+                      fontSize: 14,
+                      color: Theme.of(context).secondaryHeaderColor,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
                   ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
-                ),
-              ],
-            ),
-            CustomButton(
-              c_height: 50,
-              c_width: screenWidth * 0.5,
-              col: Theme.of(context).secondaryHeaderColor,
-              onPress: () {},
-              child: Text(
-                "Book Now",
-                style: GoogleFonts.montserrat(
-                  fontSize: 16,
-                  color: Theme.of(context).primaryColor,
+                ],
+              ),
+              CustomButton(
+                c_height: 50,
+                c_width: screenWidth * 0.5,
+                col: Theme.of(context).secondaryHeaderColor,
+                onPress: () {},
+                child: Text(
+                  "Book Now",
+                  style: GoogleFonts.montserrat(
+                    fontSize: 16,
+                    color: Theme.of(context).primaryColor,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

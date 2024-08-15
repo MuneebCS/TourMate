@@ -69,7 +69,10 @@ class _LoginState extends State<Login> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                const Spacer(),
+                // const Spacer(),
+                SizedBox(
+                  height: screenHeight * 0.4,
+                ),
                 Padding(
                   padding: EdgeInsets.only(right: screenWidth * 0.55),
                   child: Text(
@@ -130,7 +133,7 @@ class _LoginState extends State<Login> {
                     c_width: screenWidth * 0.85,
                     col: Theme.of(context).secondaryHeaderColor,
                     onPress: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const HomeScreen(),
